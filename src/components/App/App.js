@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from "react";
-import UserContext from "../contexts/CurrentUserContext";
+import UserContext from "../../contexts/CurrentUserContext";
 import { Switch, Route, useHistory } from "react-router-dom";
-import ProtectedRoute from "./ProtectedRoute";
-import "../index.css";
-import Header from "./Header";
-import Login from "./Login";
-import Register from "./Register";
-import Main from "./Main";
-import Footer from "./Footer";
-import EditProfilePopup from "./EditProfilePopup";
-import EditAvatarPopup from "./EditAvatarPopup";
-import AddPlacePopup from "./AddPlacePopup";
-import PopupWithForm from "./PopupWithForm";
-import InfoTooltip from "./InfoTooltip";
-import ImagePopup from "./ImagePopup";
-import api from "../utils/api";
-import authorize from "../utils/authorize";
+import ProtectedRoute from "../ProtectedRoute";
+import Header from "../Header/Header";
+import Home from "../Home";
+import News from "../News/News";
+import Login from "../Login";
+import Register from "../Register";
+import Main from "../Main";
+import Footer from "../Footer";
+import EditProfilePopup from "../EditProfilePopup";
+import EditAvatarPopup from "../EditAvatarPopup";
+import AddPlacePopup from "../AddPlacePopup";
+import PopupWithForm from "../PopupWithForm";
+import InfoTooltip from "../InfoTooltip";
+import ImagePopup from "../ImagePopup";
+import api from "../../utils/api";
+import authorize from "../../utils/authorize";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
@@ -303,8 +304,21 @@ function App() {
 
   return (
     <UserContext.Provider value={currentUser}>
-      <div className='page'>
+      <>
         <Switch>
+          <Route path='/saved-news'>
+            <>
+            <Header></Header>
+            <News></News>
+            </>
+          </Route>
+          <Route path='/'>
+            <>
+            <Header></Header>
+            <Home></Home>
+            </>
+          </Route>
+          {/*
           <Route path='/signin'>
             <>
               <Header
@@ -336,9 +350,10 @@ function App() {
             onCardLike={handleCardLike}
             onCardDelete={handleCardDelete}
             cards={cards}></ProtectedRoute>
+            */}
         </Switch>
         <Footer></Footer>
-      </div>
+      </>
 
       <EditProfilePopup
         isOpen={isEditProfilePopupOpen}

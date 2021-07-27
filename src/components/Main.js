@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import UserContext from "../contexts/CurrentUserContext";
 import api from "../utils/api";
 import Card from "./Card";
-import Header from "./Header";
+import Header from "./Header/Header";
 
 function Main(props) {
   const user = React.useContext(UserContext);

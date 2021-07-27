@@ -1,7 +1,4 @@
-@import url('./vendor/normalize.css');
-@import url('./vendor/fonts.css');
-
-body {
+.page {
     margin: 0 auto;
     min-width: 320px;
     font-family: 'Roboto', Arial, sans-serif;
