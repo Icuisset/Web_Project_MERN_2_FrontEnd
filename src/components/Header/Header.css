@@ -50,7 +50,6 @@
 
   @media screen and (max-width: 425px) {
     .header__navigation {
-      flex-direction: column-reverse;
       align-items : flex-start;
     }
   }
