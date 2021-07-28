@@ -1,10 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import './SearchBox.css';
+
 function SearchBox(props) {
 
   return (
-    <p>This is the searchbox</p>
+    <form className="search">
+      <fieldset className="search__box">
+        <input className="search__input" type="text" placeholder="Enter topic"/>
+        <button className="search__button" type="submit">Search</button>
+      </fieldset>
+
+    </form>
   );
 }
 
