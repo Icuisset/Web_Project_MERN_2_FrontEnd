@@ -24,7 +24,6 @@ function Signinout(props) {
 export default Signinout;
 
    /*
-     
     <button
       className="signin"
       type = "button" 

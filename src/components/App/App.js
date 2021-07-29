@@ -8,7 +8,7 @@ import News from "../News/News";
 import Login from "../Login";
 import Register from "../Register";
 import Main from "../Main";
-import Footer from "../Footer";
+import Footer from "../Footer/Footer";
 import EditProfilePopup from "../EditProfilePopup";
 import EditAvatarPopup from "../EditAvatarPopup";
 import AddPlacePopup from "../AddPlacePopup";
