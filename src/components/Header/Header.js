@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 import './Header.css';
 import Signinout from "../Signinout/Signinout";
 import SearchBox from "../SearchBox/SearchBox";
@@ -14,7 +15,10 @@ function Header(props) {
       <div className='header__navigation'>
       <Link className='header__link header__link_focused' to={'/'}>Home</Link>
       <Link className='header__link' to={'/saved-news'}>Saved articles</Link>
+      <div className='header__menu-icon'/>
+      <div className='header__signinout'>
       <Signinout></Signinout>
+      </div>
       </div>
     </header>
     <div className='header__search'>

@@ -9,6 +9,11 @@
     justify-content: center;
 }
 
+@media screen and (max-width: 900px) {
+    .signin {
+      font-size: 16px;
+    }
+  }
 
 .signout {
     border-radius: 100px;
@@ -20,6 +25,12 @@
     align-items: center;
     justify-content: center;
 }
+
+@media screen and (max-width: 900px) {
+    .signout {
+      font-size: 16px;
+    }
+  }
 
 .signout__logo {
     margin-left : 10px;
