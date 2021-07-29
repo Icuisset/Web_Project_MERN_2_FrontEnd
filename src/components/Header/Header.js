@@ -12,7 +12,7 @@ function Header(props) {
     <header className='header__top'>
       <Link className='header__logo' to={'/'}>NewsExplorer</Link>
       <div className='header__navigation'>
-      <Link className='header__link' to={'/'}>Home</Link>
+      <Link className='header__link header__link_focused' to={'/'}>Home</Link>
       <Link className='header__link' to={'/saved-news'}>Saved articles</Link>
       <Signinout></Signinout>
       </div>
