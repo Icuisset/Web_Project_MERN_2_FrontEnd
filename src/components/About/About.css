@@ -1,20 +1,89 @@
 .about {
     margin: 0 auto 0;
-    padding: 80px 104px 80px;
+    padding: 80px 104px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
+
+@media screen and (max-width: 1200px) {
+    .about {
+        align-items: center;
+   }
+  }
+
+@media screen and (max-width: 800px) {
+    .about {
+        flex-direction: column;
+   }
+  }
+
+  @media screen and (max-width: 600px) {
+    .about {
+        padding: 32px 16px;
+        max-width: 288px;
+   }
+  }
+
 
 .about__picture {
     border-radius: 100%;
     background: url('../../images/portrait_isa.jpg') 50% 50% no-repeat;
-    background-position: cover;
+    background-size: cover;
     min-width: 464px;
     min-height: 464px;
 }
 
+@media screen and (max-width: 1200px) {
+    .about__picture {
+      min-width: 300px;
+      min-height: 300px;
+   }
+  }
+
+  @media screen and (max-width: 900px) {
+    .about__picture {
+      min-width: 232px;
+      min-height: 232px;
+   }
+  }
+
 .about__text {
     max-width: 600px;
     padding-left: 56px;
+}
+
+@media screen and (max-width: 600px) {
+    .about__text {
+        padding-left: 0;
+   }
+  }
+
+
+.about__title {
+    font-family: 'Roboto Slab',Arial, sans-serif;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 46px;
+    margin-top: 60px;
+    margin-bottom: 24px;
+}
+
+@media screen and (max-width: 900px) {
+    .about__title {
+        font-size: 30px;
+        line-height: 40px;
+        margin-bottom: 16px;
+   }
+  }
+
+@media screen and (max-width: 600px) {
+    .about__title {
+       margin-top: 24px;
+   }
+  }
+
+.about__paragraph {
+    margin-top: 0;
+    margin-bottom: 0;
 }
