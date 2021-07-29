@@ -1,0 +1,20 @@
+.about {
+    margin: 0 auto 0;
+    padding: 80px 100px 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about__picture {
+    border-radius: 100%;
+    background: url('../../images/portrait_isa.jpg') 50% 50% no-repeat;
+    background-position: cover;
+    min-width: 464px;
+    min-height: 464px;
+}
+
+.about__text {
+    max-width: 600px;
+    padding-left: 56px;
+}

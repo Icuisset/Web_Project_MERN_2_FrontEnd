@@ -1,10 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import About from "./About/About";
+
 function Home(props) {
 
   return (
-    <p>This is the home page</p>
+    <>
+    <About />
+    </>
   );
 }
 
