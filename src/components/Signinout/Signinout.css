@@ -1,7 +1,26 @@
-.signinout {
+.signin {
     border-radius: 100px;
     padding: 10px 60px 10px;
     background-color: transparent;
     border : 1px solid white;
     color:white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.signout {
+    border-radius: 100px;
+    padding: 10px 20px 10px;
+    background-color: transparent;
+    border : 1px solid white;
+    color:white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signout__logo {
+    margin-left : 10px;
 }

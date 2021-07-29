@@ -59,8 +59,7 @@
     font-weight: 500;
     text-decoration: none;
     margin-right: 42px;
-    padding-top : 26px;
-    padding-bottom: 26px;
+    padding: 26px 10px 26px;
   }
 
   .header__link_focused {
