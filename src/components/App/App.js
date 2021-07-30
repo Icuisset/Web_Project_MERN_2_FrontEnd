@@ -16,6 +16,7 @@ import PopupWithForm from "../PopupWithForm";
 import InfoTooltip from "../InfoTooltip";
 import ImagePopup from "../ImagePopup";
 import api from "../../utils/api";
+import initialCards from "../../utils/initialCards";
 import authorize from "../../utils/authorize";
 
 function App() {
@@ -315,7 +316,8 @@ function App() {
           <Route path='/'>
             <>
             <Header></Header>
-            <Home></Home>
+            <Home
+            cards={initialCards}></Home>
             </>
           </Route>
           {/*

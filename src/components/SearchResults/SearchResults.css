@@ -1,0 +1,32 @@
+.searchResults {
+    padding : 80px 104px;
+}
+
+.searchResults__title {
+    font-family: 'Roboto Slab',Arial, sans-serif;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 46px;
+    margin-top: 0px;
+    margin-bottom: 64px;
+}
+
+.cards {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 400px);
+    row-gap: 16px;
+    column-gap: 16px;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  @media screen and (max-width: 1440px) {
+    .cards {
+      grid-template-columns: repeat(auto-fit, 400px);
+    }
+  }
+  
