@@ -9,10 +9,34 @@
     position: relative;
 }
 
+@media screen and (max-width: 900px) {
+    .card {
+    
+    }
+  }
+
+@media screen and (max-width: 600px) {
+    .card {
+    
+    }
+  }
+
 .card__image {
     width: 400px;
     height: 272px;
 }
+
+@media screen and (max-width: 900px) {
+    .card__image {
+     
+    }
+  }
+
+@media screen and (max-width: 600px) {
+    .card__image {
+   
+    }
+  }
 
 .card__text-zone {
     padding: 17px 24px 24px;

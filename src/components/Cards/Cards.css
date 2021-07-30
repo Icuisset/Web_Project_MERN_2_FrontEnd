@@ -13,7 +13,29 @@
 
   @media screen and (max-width: 1440px) {
     .cards {
-      grid-template-columns: repeat(auto-fit, 400px);
+        grid-template-columns: repeat(auto-fit, 400px);
     }
   }
-  
+
+  @media screen and (max-width: 900px) {
+    .cards {
+      grid-template-columns: repeat(auto-fit, 224px);
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .cards {
+      grid-template-columns: repeat(auto-fit, 288px);
+    }
+  }
+
+  .cards__title {
+    font-family: 'Roboto Slab', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 46px;
+    margin-top: 0px;
+    margin-bottom: 48px;
+    grid-row:1;
+    grid-column:1/-1;
+  }
