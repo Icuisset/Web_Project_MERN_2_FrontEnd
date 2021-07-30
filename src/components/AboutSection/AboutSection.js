@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import './About.css';
+import './AboutSection.css';
 
-function About() {
+function AboutSection() {
     return(
         <section className="about">
         <div className="about__picture"></div>
@@ -19,4 +19,4 @@ function About() {
     );
 }
 
-export default About;
+export default AboutSection;

@@ -1,0 +1,23 @@
+.searchResults {
+    padding : 80px 104px;
+    background-color: #F5F6F7;
+}
+
+@media screen and (max-width: 1440px) {
+    .searchResults__title-zone {
+      grid-template-columns: repeat(auto-fit, 400px);
+    }
+  }
+  
+
+.searchResults__title {
+    font-family: 'Roboto Slab',Arial, sans-serif;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 46px;
+    margin-top: 0px;
+    margin-bottom: 64px;
+    /* adding center alingment for improved responsive design*/
+    text-align: center;
+}
+

@@ -3,8 +3,8 @@ import UserContext from "../../contexts/CurrentUserContext";
 import { Switch, Route, useHistory } from "react-router-dom";
 import ProtectedRoute from "../ProtectedRoute";
 import Header from "../Header/Header";
-import Home from "../Home";
-import News from "../News/News";
+import HomePage from "../HomePage/HomePage";
+import NewsPage from "../NewsPage/NewsPage";
 import Login from "../Login";
 import Register from "../Register";
 import Main from "../Main";
@@ -310,14 +310,14 @@ function App() {
           <Route path='/saved-news'>
             <>
             <Header></Header>
-            <News></News>
+            <NewsPage></NewsPage>
             </>
           </Route>
           <Route path='/'>
             <>
             <Header></Header>
-            <Home
-            cards={initialCards}></Home>
+            <HomePage
+            cards={initialCards.slice(0, 3)}></HomePage>
             </>
           </Route>
           {/*
