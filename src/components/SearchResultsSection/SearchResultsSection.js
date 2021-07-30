@@ -9,6 +9,9 @@ function SearchResultsSection(props) {
     <section className="searchResults">
         <h2 className="searchResults__title">Search results</h2>
         <Cards cards={props.cards} />
+        <button className='searchResults__showmoreButton' type='button' onClick=''>
+        Show more
+      </button>
     </section>
   );
 }
