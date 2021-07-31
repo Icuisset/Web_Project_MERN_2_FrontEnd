@@ -10,7 +10,7 @@ const initialCards = [{
     {
         "keyword": "Nature",
         "title": "Nature makes you better",
-        "text": "We all know how good nature can make us feel. We have known it for millennia: the sound of the ocean, the scents of a forest, the way dappled sunlight dances through leaves and to be cropped to be cropped when it is over 5 lines - to be cropped when it is over 5 lines.",
+        "text": "We all know how good nature can make us feel.",
         "date": "February 19, 2019",
         "source": "national geographic",
         "link": "https://www.nationalgeographic.com/",
