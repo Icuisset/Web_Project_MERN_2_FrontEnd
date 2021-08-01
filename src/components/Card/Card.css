@@ -40,6 +40,12 @@
     }
 }
 
+@media screen and (max-width: 600px) {
+    .card__text-zone {
+        min-height: 212px;
+    }
+}
+
 .card__date {
     margin-top: 0;
     margin-bottom: 15px;
@@ -50,6 +56,12 @@
 @media screen and (max-width: 900px) {
     .card__date {
         margin-bottom: 12px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .card__date {
+        margin-bottom: 10px;
     }
 }
 
@@ -84,6 +96,17 @@
     }
 }
 
+@media screen and (max-width: 900px) {
+    .card__title {
+        margin-bottom: 14px;
+        min-height: 48px;
+        max-height: 48px;
+        /* fallback */
+        -webkit-line-clamp: 2;
+        /* number of lines to show */
+    }
+}
+
 .card__text {
     margin-top: 0;
     margin-bottom: 18px;
@@ -107,6 +130,12 @@
         /* fallback */
         -webkit-line-clamp: 4;
         /* number of lines to show */
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .card__text {
+        margin-bottom: 8px;
     }
 }
 
