@@ -65,6 +65,28 @@
     background-color: white;
 }
 
+.card__message-signin {
+    width: 182px;
+    height: 40px;
+    position: absolute;
+    top: 24px;
+    right: 69px;
+    border-radius: 8px;
+    border: none;
+    background-color: white;
+    color: black;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+    display: none;
+}
+
+.card__button-bookmark:hover + .card__message-signin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .card__button-delete {
     background: url(../../images/delete-inactive.svg) 50% 50% no-repeat;
     background-color: white;
