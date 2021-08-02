@@ -6,10 +6,11 @@ import Cards from "../Cards/Cards";
 function SearchResultsSection(props) {
   return (
     <section className='searchResults'>
-      <Cards cards={props.cards} isHomePage={true} />
+      <Cards cards={props.cards} isHomePage={false} />
       <button
         className='searchResults__showmoreButton'
         type='button'
+        aria-label='show more'
         onClick=''>
         Show more
       </button>

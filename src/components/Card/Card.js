@@ -11,6 +11,24 @@ function Card(props) {
         alt={props.card.title}
         className='card__image'
       />
+      {props.isHomePage ? (
+        <button
+          className='card__button card__button-bookmark'
+          type='button'
+          aria-label='card button'
+          onClick=''></button>
+      ) : (
+        <>
+          <button
+            className='card__button card__button-delete'
+            type='button'
+            aria-label='card button'
+            onClick=''></button>
+          {props.card.keyword ? (
+            <div className='card__keyword'>{props.card.keyword}</div>
+          ) : null}
+        </>
+      )}
       <div className='card__text-zone'>
         <div>
           <p className='card__date'>{props.card.date}</p>

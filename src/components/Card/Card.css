@@ -24,6 +24,98 @@
     }
 }
 
+.card__button {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    border-radius: 8px;
+    border: none;
+}
+
+@media screen and (max-width: 900px) {
+    .card__button {
+        top: 8px;
+        right: 8px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .card__button {
+        top: 16px;
+        right: 16px;
+    }
+}
+
+.card__button-bookmark {
+    background: url(../../images/bookmark-inactive.svg) 50% 50% no-repeat;
+    background-color: white;
+    transition: background-image 300ms;
+}
+
+.card__button-bookmark:hover {
+    background: url(../../images/bookmark-active.svg) 50% 50% no-repeat;
+    background-color: white;
+    cursor: pointer;
+}
+
+.card__button-bookmark_active {
+    background: url(../../images/bookmark-active.svg) 50% 50% no-repeat;
+    background-color: white;
+}
+
+.card__button-delete {
+    background: url(../../images/delete-inactive.svg) 50% 50% no-repeat;
+    background-color: white;
+    transition: background-image 300ms;
+}
+
+.card__button-delete:hover {
+    background: url(../../images/delete-active.svg) 50% 50% no-repeat;
+    background-color: white;
+    cursor: pointer;
+}
+
+.card__button-delete_active {
+    background: url(../../images/delete-active.svg) 50% 50% no-repeat;
+    background-color: white;
+}
+
+.card__keyword {
+    width: 87px;
+    height: 40px;
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    border-radius: 8px;
+    border: none;
+    background-color: white;
+    color: black;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform:capitalize;
+}
+
+@media screen and (max-width: 900px) {
+    .card__keyword {
+        width: 83px;
+        top: 8px;
+        left: 8px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .card__keyword {
+        top: 16px;
+        left: 16px;
+    }
+}
+
 .card__text-zone {
     padding: 17px 24px 24px;
     min-height: 263px;

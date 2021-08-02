@@ -14,6 +14,7 @@ function Cards(props) {
                 card={card}
                 onCardSave={props.onCardSave}
                 onCardDelete={props.onCardDelete}
+                isHomePage={props.isHomePage}
               />
             ))}
           </ul>
