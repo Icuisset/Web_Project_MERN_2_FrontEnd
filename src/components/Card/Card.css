@@ -81,6 +81,21 @@
     display: none;
 }
 
+@media screen and (max-width: 900px) {
+    .card__message-signin {
+        width: 160px;
+        top: 8px;
+        right: 56px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .card__message-signin {
+        top: 16px;
+        right: 72px;
+    }
+}
+
 .card__button-bookmark:hover + .card__message-signin {
     display: flex;
     align-items: center;
