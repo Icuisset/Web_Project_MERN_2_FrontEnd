@@ -27,6 +27,7 @@ function Card(props) {
             type='button'
             aria-label='card button'
             onClick=''></button>
+          <div className='card__message-delete'>Remove from saved</div>
           {props.card.keyword ? (
             <div className='card__keyword'>{props.card.keyword}</div>
           ) : null}

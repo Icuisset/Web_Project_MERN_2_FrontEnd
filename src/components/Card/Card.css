@@ -119,6 +119,42 @@
     background-color: white;
 }
 
+.card__message-delete {
+    width: 159px;
+    height: 40px;
+    position: absolute;
+    top: 24px;
+    right: 69px;
+    border-radius: 8px;
+    border: none;
+    background-color: white;
+    color: black;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+    display: none;
+}
+
+@media screen and (max-width: 900px) {
+    .card__message-delete {
+        top: 54px;
+        right: 8px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .card__message-delete {
+        top: 64px;
+        right: 16px;
+    }
+}
+
+.card__button-delete:hover + .card__message-delete {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .card__keyword {
     width: 87px;
     height: 40px;
