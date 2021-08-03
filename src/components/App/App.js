@@ -309,13 +309,13 @@ function App() {
         <Switch>
           <Route path='/saved-news'>
             <>
-            <Header></Header>
-            <NewsPage></NewsPage>
+            <Header isLoggedIn={true}></Header>
+            <NewsPage cards={initialCards}></NewsPage>
             </>
           </Route>
           <Route path='/'>
             <>
-            <Header></Header>
+            <Header isLoggedIn={false}></Header>
             <HomePage
             cards={initialCards.slice(0, 3)}></HomePage>
             </>

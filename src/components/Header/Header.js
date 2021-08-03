@@ -17,7 +17,7 @@ function Header(props) {
       <Link className='header__link' to={'/saved-news'}>Saved articles</Link>
       <div className='header__menu-icon'/>
       <div className='header__signinout'>
-      <Signinout></Signinout>
+      <Signinout isLoggedIn={props.isLoggedIn}></Signinout>
       </div>
       </div>
     </header>

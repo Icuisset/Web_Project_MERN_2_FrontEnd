@@ -1,10 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
+import SearchResultsSection from "../SearchResultsSection/SearchResultsSection";
 
 function Newspage(props) {
 
   return (
-    <p>This is the news page</p>
+    <>
+    <SearchResultsSection
+     cards ={props.cards}
+     isHomePage={false} />
+    </>
   );
 }
 
