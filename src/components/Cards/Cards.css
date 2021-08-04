@@ -39,7 +39,7 @@
   font-weight: 400;
   font-size: 40px;
   line-height: 46px;
-  margin-top: 0px;
+  margin-top: 18px;
   margin-bottom: 48px;
   grid-row: 1;
   grid-column: 1/-1;
@@ -47,6 +47,7 @@
 
 @media screen and (max-width: 900px) {
   .cards__title {
+    margin-top: 8px;
     margin-bottom: 24px;
     font-size: 30px;
     line-height: 34px;

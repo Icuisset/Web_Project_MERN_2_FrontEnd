@@ -10,7 +10,7 @@ function Homepage(props) {
     <>
     <SearchResultsSection
      cards ={props.cards}
-     isHomePage={true} />
+     hasSectionTitle={true} />
     <AboutSection />
     </>
   );

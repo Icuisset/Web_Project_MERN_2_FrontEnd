@@ -6,7 +6,7 @@ import Cards from "../Cards/Cards";
 function SearchResultsSection(props) {
   return (
     <section className='searchResults'>
-      <Cards cards={props.cards} isHomePage={props.isHomePage} />
+      <Cards cards={props.cards} hasSectionTitle={props.hasSectionTitle} />
       <button
         className='searchResults__showmoreButton'
         type='button'

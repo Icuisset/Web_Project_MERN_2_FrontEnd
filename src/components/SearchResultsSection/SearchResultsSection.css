@@ -1,23 +1,24 @@
 .searchResults {
-  padding: 80px 104px;
+  padding: 62px 104px;
   background-color: #F5F6F7;
   text-align: center;
 }
 
 @media screen and (max-width: 900px) {
   .searchResults {
-    padding: 40px;
+    padding: 32px 40px;
   }
 }
 
 @media screen and (max-width: 600px) {
   .searchResults {
-    padding: 32px 16px;
+    padding: 24px 16px;
   }
 }
 
 .searchResults__showmoreButton {
   margin-top: 64px;
+  margin-bottom: 18px;
   border-radius: 80px;
   width: 288px;
   height: 64px;
@@ -41,13 +42,12 @@
     width: 240px;
     height: 56px;
     margin-top: 32px;
+    margin-bottom: 8px;
   }
 }
 
 @media screen and (max-width: 600px) {
   .searchResults__showmoreButton {
     width: 288px;
-    height: 56px;
-    margin-top: 32px;
   }
 }
