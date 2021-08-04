@@ -12,7 +12,7 @@ import Footer from "../Footer/Footer";
 import EditProfilePopup from "../EditProfilePopup";
 import EditAvatarPopup from "../EditAvatarPopup";
 import AddPlacePopup from "../AddPlacePopup";
-import PopupWithForm from "../PopupWithForm";
+import PopupWithForm from "../PopupWithForm/PopupWithForm";
 import InfoTooltip from "../InfoTooltip";
 import ImagePopup from "../ImagePopup";
 import api from "../../utils/api";
@@ -358,42 +358,24 @@ function App() {
         <Footer></Footer>
       </>
 
-      <EditProfilePopup
-        isOpen={isEditProfilePopupOpen}
+      <PopupWithForm
+        popupName={"signout"}
+        title={"Sign out"}
+        buttonText={"Sign out"}
+        isOpen={isInfoTooltipOpen}
         onClose={closeAllPopups}
-        onUpdateUser={handleUpdateUser}
-        buttonText={"save"}
-      />
-
-      <EditAvatarPopup
-        isOpen={isEditAvatarPopupOpen}
-        onClose={closeAllPopups}
-        onUpdateAvatar={handleUpdateAvatar}
-        buttonText={"save"}
-      />
-
-      <AddPlacePopup
-        isOpen={isAddPlacePopupOpen}
-        onClose={closeAllPopups}
-        onAddPlace={handleAddPlaceSubmit}
-        buttonText={"create"}
       />
 
       <PopupWithForm
-        popupName='confirmDelete'
-        title='Are you sure?'
-        buttonText={"confirm"}
-      />
-
-      <ImagePopup
-        card={selectedCard}
-        isOpen={isImagePopupOpen}
-        onClose={closeAllPopups}
+        popupName={"signin"}
+        title={"Sign in"}
+        buttonText={"Sign in"}
+        isOpen={true}
       />
 
       <InfoTooltip
         popupName='tooltip'
-        isOpen={isInfoTooltipOpen}
+        isOpen={false}
         onClose={closeAllPopups}
         isSuccessful={isSuccessful}
       />
