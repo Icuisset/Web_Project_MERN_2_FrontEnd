@@ -156,7 +156,9 @@
 }
 
 .card__keyword {
-    width: 87px;
+    padding-left: 22px;
+    padding-right: 22px;
+    max-width: 50%;
     height: 40px;
     position: absolute;
     top: 24px;
@@ -176,7 +178,8 @@
 
 @media screen and (max-width: 900px) {
     .card__keyword {
-        width: 83px;
+        padding-left: 20px;
+        padding-right: 20px;
         top: 8px;
         left: 8px;
     }
@@ -187,6 +190,14 @@
         top: 16px;
         left: 16px;
     }
+}
+
+.card__keyword-text {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin : 0;
+
 }
 
 .card__text-zone {

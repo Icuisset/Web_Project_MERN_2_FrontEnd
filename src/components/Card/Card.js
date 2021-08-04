@@ -29,7 +29,9 @@ function Card(props) {
             onClick=''></button>
           <div className='card__message-delete'>Remove from saved</div>
           {props.card.keyword ? (
-            <div className='card__keyword'>{props.card.keyword}</div>
+            <div className='card__keyword'>
+              <p className='card__keyword-text'>{props.card.keyword}</p>
+            </div>
           ) : null}
         </>
       )}

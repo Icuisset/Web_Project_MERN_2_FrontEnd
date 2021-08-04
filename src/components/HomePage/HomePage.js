@@ -8,7 +8,7 @@ function Homepage(props) {
   return (
     <>
       <HeaderSection isLoggedIn={props.isLoggedIn} textColor={"light"} />
-      <SearchResultsSection cards={props.cards} hasSectionTitle={true} />
+      <SearchResultsSection cards={props.cards} isHomePage={true} />
       <AboutSection />
     </>
   );
