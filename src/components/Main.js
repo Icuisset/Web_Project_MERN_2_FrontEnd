@@ -2,18 +2,18 @@ import React, { useState, useEffect } from "react";
 import UserContext from "../contexts/CurrentUserContext";
 import api from "../utils/api";
 import Card from "./Card";
-import Header from "./Header/Header";
+import HeaderSection from "../components/HeaderSection/HeaderSection";
 
 function Main(props) {
   const user = React.useContext(UserContext);
 
   return (
     <>
-      <Header
+      <HeaderSection
         userEmail={props.userEmail}
         link={"/signin"}
         message={"Log Out"}
-        onClick={props.onLogOut}></Header>
+        onClick={props.onLogOut}></HeaderSection>
       <main>
         <section className='profile page-container'>
           <div className='profile-card'>

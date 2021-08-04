@@ -1,0 +1,26 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
+import './HeaderNavBar.css';
+import Signinout from "../Signinout/Signinout";
+
+function HeaderNavBar(props) {
+
+  return (
+    <>
+    <header className='header__navbar'>
+      <Link className= {`header__logo header__logo_textcolor_${props.textColor}`} to={'/'}>NewsExplorer</Link>
+      <div className='header__navigation'>
+      <Link className= {`header__link header__link_textcolor_${props.textColor} header__link_focused_textcolor_${props.textColor}`} to={'/'}>Home</Link>
+      <Link className= {`header__link header__link_textcolor_${props.textColor}`} to={'/saved-news'}>Saved articles</Link>
+      <div className='header__menu-icon'/>
+      <div className='header__signinout'>
+      <Signinout isLoggedIn={props.isLoggedIn} textColor={props.textColor}></Signinout>
+      </div>
+      </div>
+    </header>
+    </>
+  );
+}
+
+export default HeaderNavBar;

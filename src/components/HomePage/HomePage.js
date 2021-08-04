@@ -1,17 +1,15 @@
 import React from "react";
 
+import HeaderSection from "../HeaderSection/HeaderSection";
 import AboutSection from "../AboutSection/AboutSection";
 import SearchResultsSection from "../SearchResultsSection/SearchResultsSection";
 
-
 function Homepage(props) {
-
   return (
     <>
-    <SearchResultsSection
-     cards ={props.cards}
-     hasSectionTitle={true} />
-    <AboutSection />
+      <HeaderSection isLoggedIn={props.isLoggedIn} textColor={"light"} />
+      <SearchResultsSection cards={props.cards} hasSectionTitle={true} />
+      <AboutSection />
     </>
   );
 }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import UserContext from "../../contexts/CurrentUserContext";
 import { Switch, Route, useHistory } from "react-router-dom";
 import ProtectedRoute from "../ProtectedRoute";
-import Header from "../Header/Header";
+
 import HomePage from "../HomePage/HomePage";
 import NewsPage from "../NewsPage/NewsPage";
 import Login from "../Login";
@@ -35,7 +35,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [isSuccessful, setIsSuccessful] = React.useState(false);
 
-  const [token, setToken] = useState(localStorage.getItem('token'));
+  const [token, setToken] = useState(localStorage.getItem("token"));
 
   const history = useHistory();
 
@@ -45,16 +45,17 @@ function App() {
 
   useEffect(() => {
     if (token) {
-    api
-      .getUserInfo(token)
-      .then((result) => {
-        console.log(result);
-        setCurrentUser(result);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }}, [token]); // eslint-disable-line react-hooks/exhaustive-deps
+      api
+        .getUserInfo(token)
+        .then((result) => {
+          console.log(result);
+          setCurrentUser(result);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [token]); // eslint-disable-line react-hooks/exhaustive-deps
 
   /**
    * initial call to api to get all cards from api
@@ -62,16 +63,17 @@ function App() {
 
   useEffect(() => {
     if (token) {
-    api
-      .getInitialCards(token)
-      .then((result) => {
-        setCards(result);
-        console.log(result);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }}, [token]);
+      api
+        .getInitialCards(token)
+        .then((result) => {
+          setCards(result);
+          console.log(result);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [token]);
 
   /**
    * handle all general click actions
@@ -246,7 +248,7 @@ function App() {
         setUserEmail(email);
         console.log(email);
         setToken(result.token);
-        localStorage.setItem('token', result.token);
+        localStorage.setItem("token", result.token);
         console.log(result.token);
         history.push("/");
       })
@@ -309,15 +311,14 @@ function App() {
         <Switch>
           <Route path='/saved-news'>
             <>
-            <Header isLoggedIn={true}></Header>
-            <NewsPage cards={initialCards}></NewsPage>
+              <NewsPage isLoggedIn={true} cards={initialCards}></NewsPage>
             </>
           </Route>
           <Route path='/'>
             <>
-            <Header isLoggedIn={false}></Header>
-            <HomePage
-            cards={initialCards.slice(0, 3)}></HomePage>
+              <HomePage
+                isLoggedIn={false}
+                cards={initialCards.slice(0, 3)}></HomePage>
             </>
           </Route>
           {/*
