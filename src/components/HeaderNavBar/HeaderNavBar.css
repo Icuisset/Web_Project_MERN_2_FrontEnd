@@ -81,11 +81,18 @@
 }
 
 .header__menu-icon {
-    background: url("../../images/menu-icon.svg") 50% 50% no-repeat;
     background-position: cover;
     width: 24px;
     height: 24px;
     display: none;
+}
+
+.header__menu-icon_textcolor_dark {
+    background: url("../../images/menu-icon-black.svg") 50% 50% no-repeat;
+}
+
+.header__menu-icon_textcolor_light {
+    background: url("../../images/menu-icon.svg") 50% 50% no-repeat;
 }
 
 @media screen and (max-width: 650px) {
