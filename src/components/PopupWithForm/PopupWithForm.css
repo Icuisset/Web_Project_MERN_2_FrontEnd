@@ -31,10 +31,11 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content:flex-start;
+    align-items: stretch;
     position: relative;
-    padding: 34px 36px 28px;
+    padding: 34px 35px 28px;
+    box-sizing: border-box;
   }
 
   .popup__container_type_signin {
@@ -98,9 +99,28 @@
   }
   
   .popup__button:hover {
-    opacity: 0.8;
+    opacity: 0.85;
     cursor: pointer;
   }
+
+  .popup__alternative-link-zone {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 16px;
+      font-size: 14px;
+      line-height: 17px;
+  }
+
+  .popup__alternative-text {
+      margin: 0 10px 0 0;
+  }
+
+  .popup__alternative-link {
+      color : #2F71E5;
+      text-decoration: none;
+  }
+
 
   .close-button {
     background-color: transparent;
@@ -113,8 +133,8 @@
     top: -36px;
     right: -36px;
     padding: 0;
-    width: 32px;
-    height: 32px;
+    width: 22px;
+    height: 22px;
   }
   
   .close-button:hover {

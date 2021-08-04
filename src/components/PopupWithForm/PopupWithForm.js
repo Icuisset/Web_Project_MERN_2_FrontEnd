@@ -1,8 +1,13 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 
 import "./PopupWithForm.css";
 
 function PopupWithForm(props) {
+  const handleLinkClick = (event) => {
+    console.log(event.target);
+  };
+
   return (
     <div className={`popup ${props.isOpen && "popup_opened"}`}>
       <div className='popup__overlay' onClick={props.onClose} />
@@ -21,6 +26,15 @@ function PopupWithForm(props) {
             aria-label='submit button'>
             {props.buttonText}
           </button>
+          <div className='popup__alternative-link-zone'>
+            <p className='popup__alternative-text'>or</p>
+            <a
+              className='popup__alternative-link'
+              href='#'
+              onClick={handleLinkClick}>
+              {props.alternativeLink}
+            </a>
+          </div>
         </form>
         <button
           type='button'

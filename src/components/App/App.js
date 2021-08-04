@@ -371,6 +371,7 @@ function App() {
         title={"Sign in"}
         buttonText={"Sign in"}
         isOpen={true}
+        alternativeLink={"Sign up"}
       />
 
       <InfoTooltip
