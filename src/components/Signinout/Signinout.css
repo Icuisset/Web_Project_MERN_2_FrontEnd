@@ -8,6 +8,10 @@
   font-weight: 500;
 }
 
+.signin:hover {
+  cursor: pointer;
+}
+
 .signin_textcolor_light {
   color: white;
   border: 1px solid white;
@@ -31,6 +35,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.signout:hover {
+  cursor: pointer;
 }
 
 .signout_textcolor_light {
