@@ -7,29 +7,21 @@ import HomePage from "../HomePage/HomePage";
 import NewsPage from "../NewsPage/NewsPage";
 import Login from "../Login";
 import Register from "../Register";
-import Main from "../Main";
 import Footer from "../Footer/Footer";
-import EditProfilePopup from "../EditProfilePopup";
-import EditAvatarPopup from "../EditAvatarPopup";
-import AddPlacePopup from "../AddPlacePopup";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
+import SigninPopup from "../SigninPopup/SigninPopup";
 import InfoTooltip from "../InfoTooltip";
-import ImagePopup from "../ImagePopup";
 import api from "../../utils/api";
 import initialCards from "../../utils/initialCards";
 import authorize from "../../utils/authorize";
 
 function App() {
-  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
-  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
-  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
-  const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
+  const [isSigninPopupOpen, setIsSigninPopupOpen] = useState(false);
+  const [isSignupPopupOpen, setIsSignupPopupOpen] = useState(false);
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
 
-  const [selectedCard, setSelectedCard] = useState({});
-  const [cards, setCards] = useState([]);
-
   const [currentUser, setCurrentUser] = useState({});
+  const [userName, setUserName] = React.useState("");
   const [userEmail, setUserEmail] = React.useState("");
 
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
@@ -58,42 +50,11 @@ function App() {
   }, [token]); // eslint-disable-line react-hooks/exhaustive-deps
 
   /**
-   * initial call to api to get all cards from api
-   */
-
-  useEffect(() => {
-    if (token) {
-      api
-        .getInitialCards(token)
-        .then((result) => {
-          setCards(result);
-          console.log(result);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }, [token]);
-
-  /**
    * handle all general click actions
    */
 
-  const handleEditAvatarClick = () => {
-    setIsEditAvatarPopupOpen(true);
-  };
-
-  const handleEditProfileClick = () => {
-    setIsEditProfilePopupOpen(true);
-  };
-
-  const handleAddPlaceClick = () => {
-    setIsAddPlacePopupOpen(true);
-  };
-
-  const handleCardClick = ({ name, link }) => {
-    setSelectedCard({ name, link });
-    setIsImagePopupOpen(true);
+  const handleSigninClick = () => {
+    setIsSigninPopupOpen(true);
   };
 
   /**
@@ -101,12 +62,9 @@ function App() {
    */
 
   const closeAllPopups = () => {
-    setIsEditAvatarPopupOpen(false);
-    setIsAddPlacePopupOpen(false);
-    setIsEditProfilePopupOpen(false);
-    setIsImagePopupOpen(false);
+    setIsSigninPopupOpen(false);
+    setIsSignupPopupOpen(false);
     setIsInfoTooltipOpen(false);
-    setSelectedCard({});
     console.log("popup closed");
   };
 
@@ -121,79 +79,6 @@ function App() {
         console.log(result);
         setCurrentUser(result);
         closeAllPopups();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  const handleUpdateAvatar = ({ avatar }) => {
-    api
-      .editUserAvatar(avatar, token)
-      .then((result) => {
-        console.log(result);
-        setCurrentUser(result);
-        closeAllPopups();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  const handleAddPlaceSubmit = ({ title, link }) => {
-    console.log(title, link);
-    api
-      .postNewCard(title, link, token)
-      .then((newCard) => {
-        console.log(newCard);
-        setCards([newCard, ...cards]);
-        closeAllPopups();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  /**
-   * handle updates to the api after actions on cards
-   */
-
-  const handleCardLike = (card) => {
-    const isLiked = card.likes.includes(currentUser._id);
-    if (isLiked === false) {
-      api
-        .addCardLike(card._id, token)
-        .then((newCard) => {
-          console.log(newCard);
-          setCards((state) =>
-            state.map((c) => (c._id === card._id ? newCard : c))
-          );
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else {
-      api
-        .removeCardLike(card._id, token)
-        .then((newCard) => {
-          setCards((state) =>
-            state.map((c) => (c._id === card._id ? newCard : c))
-          );
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  };
-
-  const handleCardDelete = (card) => {
-    api
-      .deleteCard(card._id, token)
-      .then((result) => {
-        console.log(result);
-        const newCards = cards.filter((c) => c._id !== card._id);
-        console.log(newCards);
-        setCards(newCards);
       })
       .catch((err) => {
         console.log(err);
@@ -358,21 +243,7 @@ function App() {
         <Footer></Footer>
       </>
 
-      <PopupWithForm
-        popupName={"signout"}
-        title={"Sign out"}
-        buttonText={"Sign out"}
-        isOpen={isInfoTooltipOpen}
-        onClose={closeAllPopups}
-      />
-
-      <PopupWithForm
-        popupName={"signin"}
-        title={"Sign in"}
-        buttonText={"Sign in"}
-        isOpen={true}
-        alternativeLink={"Sign up"}
-      />
+      <SigninPopup isOpen={true} onClose={closeAllPopups} />
 
       <InfoTooltip
         popupName='tooltip'

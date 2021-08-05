@@ -1,8 +1,8 @@
 import React from "react";
 
-import "./Signinout.css";
+import "./SigninoutButton.css";
 
-function Signinout(props) {
+function SigninoutButton(props) {
   return (
     <>
       {props.isLoggedIn ? (
@@ -55,4 +55,4 @@ function Signinout(props) {
   );
 }
 
-export default Signinout;
+export default SigninoutButton;

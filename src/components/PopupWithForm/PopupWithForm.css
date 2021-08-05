@@ -88,6 +88,7 @@
     background-color: #2F71E5;
     color: white;
     border: none;
+    padding: 0;
     opacity: 1;
     transition: opacity 0.3s ease;
     width: 360px;
@@ -95,6 +96,7 @@
     font-weight: 500;
     border-radius: 100px;
     box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2);
+    margin-top: 8px;
 
   }
   

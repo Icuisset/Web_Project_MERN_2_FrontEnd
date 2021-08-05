@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import './HeaderNavBar.css';
-import Signinout from "../Signinout/Signinout";
+import SigninoutButton from "../SigninoutButton/SigninoutButton";
 
 function HeaderNavBar(props) {
 
@@ -15,7 +15,7 @@ function HeaderNavBar(props) {
       <Link className= {`header__link header__link_textcolor_${props.textColor}`} to={'/saved-news'}>Saved articles</Link>
       <div className={`header__menu-icon header__menu-icon_textcolor_${props.textColor}`}/>
       <div className='header__signinout'>
-      <Signinout isLoggedIn={props.isLoggedIn} textColor={props.textColor}></Signinout>
+      <SigninoutButton isLoggedIn={props.isLoggedIn} textColor={props.textColor}></SigninoutButton>
       </div>
       </div>
     </header>
