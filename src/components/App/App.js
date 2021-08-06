@@ -8,9 +8,9 @@ import NewsPage from "../NewsPage/NewsPage";
 import Login from "../Login";
 import Register from "../Register";
 import Footer from "../Footer/Footer";
-import PopupWithForm from "../PopupWithForm/PopupWithForm";
 import SigninPopup from "../SigninPopup/SigninPopup";
-import InfoTooltip from "../InfoTooltip";
+import SignupPopup from "../SignupPopup/SignupPopup";
+import SuccessPopup from "../SuccessPopup/SuccessPopup";
 import api from "../../utils/api";
 import initialCards from "../../utils/initialCards";
 import authorize from "../../utils/authorize";
@@ -243,12 +243,14 @@ function App() {
         <Footer></Footer>
       </>
 
-      <SigninPopup isOpen={true} onClose={closeAllPopups} />
+      <SigninPopup isOpen={false} onClose={closeAllPopups} />
 
-      <InfoTooltip
-        popupName='tooltip'
-        isOpen={false}
+      <SignupPopup isOpen={false} onClose={closeAllPopups} />
+
+      <SuccessPopup
+        isOpen={true}
         onClose={closeAllPopups}
+        popupName='success'
         isSuccessful={isSuccessful}
       />
     </UserContext.Provider>
