@@ -6,6 +6,8 @@ import PopupWithForm from "../PopupWithForm/PopupWithForm";
 function SigninPopup(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  /* only to test CSS for now */
+  const [inputsAreValid, setInputsAreValid] = React.useState(true);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -24,7 +26,6 @@ function SigninPopup(props) {
     <PopupWithForm
       popupName={"signin"}
       title={"Sign in"}
-      buttonText={"Sign in"}
       isOpen={props.isOpen}
       onClose={props.onClose}
       onSubmit={handleSubmit}
@@ -59,6 +60,14 @@ function SigninPopup(props) {
           maxLength={40}
         />
       </div>
+      <button
+        type='submit'
+        className={`popup__button ${
+          !inputsAreValid && "popup__button_deactivated"
+        }`}
+        aria-label='submit button'>
+        Sign in
+      </button>
     </PopupWithForm>
   );
 }

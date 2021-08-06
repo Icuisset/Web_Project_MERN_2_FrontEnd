@@ -4,6 +4,8 @@ import React from "react";
 import "./PopupWithForm.css";
 
 function PopupWithForm(props) {
+  /* only to test CSS for now */
+
   const handleLinkClick = (event) => {
     console.log(event.target);
   };
@@ -20,12 +22,6 @@ function PopupWithForm(props) {
           onSubmit={props.onSubmit}>
           <h3 className='popup__title'>{props.title}</h3>
           {props.children}
-          <button
-            type='submit'
-            className='popup__button'
-            aria-label='submit button'>
-            {props.buttonText}
-          </button>
           <div className='popup__alternative-link-zone'>
             <p className='popup__alternative-text'>or</p>
             <a
