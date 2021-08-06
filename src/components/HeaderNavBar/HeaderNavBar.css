@@ -85,6 +85,8 @@
     width: 24px;
     height: 24px;
     display: none;
+    background-color: transparent;
+    border: none;
 }
 
 .header__menu-icon_textcolor_dark {
@@ -103,4 +105,8 @@
     .header__signinout {
         display: none;
     }
+}
+
+.header__menu-icon:hover {
+    cursor: pointer;
 }

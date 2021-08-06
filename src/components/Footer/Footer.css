@@ -25,6 +25,12 @@
     }
   }
 
+  @media screen and (max-width: 600px) {
+    .footer {
+      padding: 24px 16px 18px;
+    }
+}
+
 .footer__copyright {
     margin-top: 0;
     margin-bottom: 0;

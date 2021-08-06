@@ -83,25 +83,6 @@
     margin-top: 0;
     margin-bottom: 22px;
   }
-  
-  .popup__alternative-link-zone {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 16px;
-      font-size: 14px;
-      line-height: 17px;
-  }
-
-  .popup__alternative-text {
-      margin: 0 10px 0 0;
-  }
-
-  .popup__alternative-link {
-      color : #2F71E5;
-      text-decoration: none;
-  }
-
 
   .close-button {
     background-color: transparent;

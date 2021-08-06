@@ -30,8 +30,7 @@ function SigninPopup(props) {
       title={"Sign in"}
       isOpen={props.isOpen}
       onClose={props.onClose}
-      onSubmit={handleSubmit}
-      alternativeLink={"Sign up"}>
+      onSubmit={handleSubmit}>
       <div className='form__inputs-zone'>
         <div className='form__input-zone'>
           <label className='form__label' for='profileEmail'>
@@ -84,6 +83,15 @@ function SigninPopup(props) {
         aria-label='submit button'>
         Sign in
       </button>
+      <div className='popup__alternative-link-zone'>
+        <p className='popup__alternative-text'>or</p>
+        <button
+          type='button'
+          className='popup__alternative-link'
+          onClick={props.signupClick}>
+          Sign up
+        </button>
+      </div>
     </PopupWithForm>
   );
 }

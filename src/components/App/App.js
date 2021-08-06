@@ -18,7 +18,7 @@ import authorize from "../../utils/authorize";
 function App() {
   const [isSigninPopupOpen, setIsSigninPopupOpen] = useState(false);
   const [isSignupPopupOpen, setIsSignupPopupOpen] = useState(false);
-  const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
+  const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(true);
 
   const [currentUser, setCurrentUser] = useState({});
   const [userName, setUserName] = React.useState("");
@@ -53,7 +53,26 @@ function App() {
    * handle all general click actions
    */
 
-  const handleSigninClick = () => {
+  const handleSuccessSigninClick = () => {
+    setIsSuccessPopupOpen(false);
+    setIsSigninPopupOpen(true);
+  };
+
+  const handleHeaderSigninClick = () => {
+    setIsSigninPopupOpen(true);
+  };
+
+  const handleHeaderSignoutClick = () => {
+    console.log("you are signed out");
+  };
+
+  const handlePopupSignupClick = () => {
+    setIsSigninPopupOpen(false);
+    setIsSignupPopupOpen(true);
+  };
+
+  const handlePopupSigninClick = () => {
+    setIsSignupPopupOpen(false);
     setIsSigninPopupOpen(true);
   };
 
@@ -64,7 +83,7 @@ function App() {
   const closeAllPopups = () => {
     setIsSigninPopupOpen(false);
     setIsSignupPopupOpen(false);
-    setIsInfoTooltipOpen(false);
+    setIsSuccessPopupOpen(false);
     console.log("popup closed");
   };
 
@@ -97,10 +116,8 @@ function App() {
         if (result.err) {
           console.log(result.err);
           setIsSuccessful(false);
-          setIsInfoTooltipOpen(true);
         } else {
           setIsSuccessful(true);
-          setIsInfoTooltipOpen(true);
           setUserEmail(email);
           history.push("/signin");
         }
@@ -108,7 +125,6 @@ function App() {
       .catch((err) => {
         console.log(err);
         setIsSuccessful(false);
-        setIsInfoTooltipOpen(true);
       });
   };
 
@@ -124,7 +140,6 @@ function App() {
         if (result.statusCode === 401) {
           console.log(result);
           setIsSuccessful(false);
-          setIsInfoTooltipOpen(true);
         }
         const JWT = localStorage.getItem("jwt");
         if (JWT) {
@@ -140,7 +155,6 @@ function App() {
       .catch((err) => {
         console.log(err);
         setIsSuccessful(false);
-        setIsInfoTooltipOpen(true);
       });
   };
 
@@ -162,7 +176,6 @@ function App() {
       .catch((err) => {
         console.log(err);
         setIsSuccessful(false);
-        setIsInfoTooltipOpen(true);
       });
   };
 
@@ -196,14 +209,20 @@ function App() {
         <Switch>
           <Route path='/saved-news'>
             <>
-              <NewsPage isLoggedIn={true} cards={initialCards}></NewsPage>
+              <NewsPage
+                isLoggedIn={true}
+                cards={initialCards}
+                signinClick={() => handleHeaderSigninClick()}
+                signoutClick={() => handleHeaderSignoutClick()}></NewsPage>
             </>
           </Route>
           <Route path='/'>
             <>
               <HomePage
                 isLoggedIn={false}
-                cards={initialCards.slice(0, 3)}></HomePage>
+                cards={initialCards.slice(0, 3)}
+                signinClick={() => handleHeaderSigninClick()}
+                signoutClick={() => handleHeaderSignoutClick()}></HomePage>
             </>
           </Route>
           {/*
@@ -243,15 +262,24 @@ function App() {
         <Footer></Footer>
       </>
 
-      <SigninPopup isOpen={false} onClose={closeAllPopups} />
+      <SigninPopup
+        isOpen={isSigninPopupOpen}
+        onClose={closeAllPopups}
+        signupClick={() => handlePopupSignupClick()}
+      />
 
-      <SignupPopup isOpen={false} onClose={closeAllPopups} />
+      <SignupPopup
+        isOpen={isSignupPopupOpen}
+        onClose={closeAllPopups}
+        signinClick={() => handlePopupSigninClick()}
+      />
 
       <SuccessPopup
-        isOpen={true}
+        isOpen={isSuccessPopupOpen}
         onClose={closeAllPopups}
         popupName='success'
         isSuccessful={isSuccessful}
+        signinClick={() => handleSuccessSigninClick()}
       />
     </UserContext.Provider>
   );

@@ -50,6 +50,7 @@
     border-radius: 100px;
     background-color: #2F71E5;
     box-sizing: border-box;
+    transition: opacity 300ms ease;
 }
 
 @media screen and (max-width: 900px) {
@@ -62,4 +63,13 @@
     .search__button {
         align-self: stretch;
    }
+  }
+
+  .search__button:active {
+    background-color: #2A65CC;
+  }
+
+  .search__button:hover {
+    opacity: 0.90;
+    cursor: pointer;
   }

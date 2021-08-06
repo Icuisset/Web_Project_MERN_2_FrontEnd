@@ -118,6 +118,15 @@ function SignupPopup(props) {
         aria-label='submit button'>
         Sign up
       </button>
+      <div className='popup__alternative-link-zone'>
+        <p className='popup__alternative-text'>or</p>
+        <button
+          type='button'
+          className='popup__alternative-link'
+          onClick={props.signinClick}>
+          Sign in
+        </button>
+      </div>
     </PopupWithForm>
   );
 }

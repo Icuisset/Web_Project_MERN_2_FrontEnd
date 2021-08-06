@@ -6,10 +6,6 @@ import "./PopupWithForm.css";
 function PopupWithForm(props) {
   /* only to test CSS for now */
 
-  const handleLinkClick = (event) => {
-    console.log(event.target);
-  };
-
   return (
     <div className={`popup ${props.isOpen && "popup_opened"}`}>
       <div className='popup__overlay' onClick={props.onClose} />
@@ -22,15 +18,6 @@ function PopupWithForm(props) {
           onSubmit={props.onSubmit}>
           <h3 className='popup__title'>{props.title}</h3>
           {props.children}
-          <div className='popup__alternative-link-zone'>
-            <p className='popup__alternative-text'>or</p>
-            <a
-              className='popup__alternative-link'
-              href='#'
-              onClick={handleLinkClick}>
-              {props.alternativeLink}
-            </a>
-          </div>
         </form>
         <button
           type='button'

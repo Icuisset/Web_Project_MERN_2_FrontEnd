@@ -9,7 +9,7 @@ function SigninoutButton(props) {
         <button
           className={`signout signout_textcolor_${props.textColor}`}
           type='button'
-          onClick=''>
+          onClick={props.signoutClick}>
           Elise
           {props.textColor === "dark" ? (
             <svg
@@ -47,7 +47,7 @@ function SigninoutButton(props) {
         <button
           className={`signin signin_textcolor_${props.textColor}`}
           type='button'
-          onClick=''>
+          onClick={props.signinClick}>
           Sign in
         </button>
       )}

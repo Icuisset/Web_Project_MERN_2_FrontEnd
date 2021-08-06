@@ -65,6 +65,11 @@
     background-color: white;
 }
 
+.card__button-bookmark:active {
+    background: url(../../images/bookmark-pressed.svg) 50% 50% no-repeat;
+    background-color: white;
+}
+
 .card__message-signin {
     width: 182px;
     height: 40px;
@@ -154,6 +159,8 @@
     align-items: center;
     justify-content: center;
 }
+
+
 
 .card__keyword {
     padding-left: 22px;

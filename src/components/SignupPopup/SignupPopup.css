@@ -8,6 +8,7 @@
 
 .form__input-zone {
     position: relative;
+    width: 100%;
 }
 
 .form__label {
@@ -72,3 +73,32 @@
     color: #B6BCBF;
     box-shadow: none;
   }
+
+  .popup__button:active {
+    background-color: #2A65CC;
+}
+
+  .popup__alternative-link-zone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.popup__alternative-text {
+    margin: 0 10px 0 0;
+    padding-bottom: 1px;
+}
+
+.popup__alternative-link {
+    color : #2F71E5;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+}
+
+.popup__alternative-link:hover {
+    cursor: pointer;
+}
