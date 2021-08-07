@@ -14,21 +14,22 @@ class Authorize {
   }
 
 
-  //POST https://www.api.theworldaround.co.uk/signup
-  register(email, password) {
+  //POST https://www.api.news-explorer.info/signup
+  register(name, email, password) {
     return fetch(this._baseUrl + '/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
+        name: name,
         email: email,
         password: password,
       }),
     }).then((res) => this._checkResponse(res))
   }
 
-  //POST https://www.api.theworldaround.co.uk/signin
+  //POST https://www.api.news-explorer.info/signin
   authorizeWithToken(email, password) {
     return fetch(this._baseUrl + '/signin', {
         method: 'POST',
@@ -49,7 +50,7 @@ class Authorize {
       })
   }
 
-  //GET https://www.api.theworldaround.co.uk/users/me
+  //GET https://www.api.news-explorer.info/users/me
   checkTokenIsValid(jwt) {
     return fetch(this._baseUrl + '/users/me', {
       method: 'GET',
@@ -63,7 +64,7 @@ class Authorize {
 
 
 const authorize = new Authorize({
-  baseUrl: 'https://www.api.theworldaround.co.uk',
+  baseUrl: 'https://www.api.news-explorer.info',
 })
 
 export default authorize;
