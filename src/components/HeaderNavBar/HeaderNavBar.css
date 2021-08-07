@@ -70,13 +70,11 @@
     }
 }
 
-.header__link_focused_textcolor_light {
-    color: white;
+.header__link_focused_home {
     border-bottom: #fff 2px solid;
 }
 
-.header__link_focused_textcolor_dark {
-    color: #1A1B22;
+.header__link_focused_news {
     border-bottom: #1A1B22 2px solid;
 }
 

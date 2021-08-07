@@ -15,12 +15,16 @@ function HeaderNavBar(props) {
         </Link>
         <div className='header__navigation'>
           <Link
-            className={`header__link header__link_textcolor_${props.textColor} header__link_focused_textcolor_${props.textColor}`}
+            className={`header__link header__link_textcolor_${
+              props.textColor
+            } ${props.isHomePage && "header__link_focused_home"}`}
             to={"/"}>
             Home
           </Link>
           <Link
-            className={`header__link header__link_textcolor_${props.textColor}`}
+            className={`header__link header__link_textcolor_${
+              props.textColor
+            } ${props.isNewsPage && "header__link_focused_news"}`}
             to={"/saved-news"}>
             Saved articles
           </Link>
