@@ -13,7 +13,8 @@ function Newspage(props) {
           isLoggedIn={props.isLoggedIn}
           textColor={"dark"}
           signinClick={props.signinClick}
-          signoutClick={props.signoutClick}></HeaderNavBar>
+          signoutClick={props.signoutClick}
+          mobileMenuClick={props.mobileMenuClick}></HeaderNavBar>
       </div>
       <section className='newspage__top-section'>
         <p className='newspage__subtitle'>Saved articles</p>

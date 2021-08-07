@@ -7,7 +7,7 @@ function SigninoutButton(props) {
     <>
       {props.isLoggedIn ? (
         <button
-          className={`signout signout_textcolor_${props.textColor}`}
+          className={`signout signout_textcolor_${props.textColor} ${props.isMobileMenu && "button_type_mobile"}`}
           type='button'
           onClick={props.signoutClick}>
           Elise
@@ -45,7 +45,7 @@ function SigninoutButton(props) {
         </button>
       ) : (
         <button
-          className={`signin signin_textcolor_${props.textColor}`}
+          className={`signin signin_textcolor_${props.textColor} ${props.isMobileMenu && "button_type_mobile"}`}
           type='button'
           onClick={props.signinClick}>
           Sign in

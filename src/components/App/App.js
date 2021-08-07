@@ -11,6 +11,7 @@ import Footer from "../Footer/Footer";
 import SigninPopup from "../SigninPopup/SigninPopup";
 import SignupPopup from "../SignupPopup/SignupPopup";
 import SuccessPopup from "../SuccessPopup/SuccessPopup";
+import MobileMenu from "../MobileMenu/MobileMenu";
 import api from "../../utils/api";
 import initialCards from "../../utils/initialCards";
 import authorize from "../../utils/authorize";
@@ -18,7 +19,9 @@ import authorize from "../../utils/authorize";
 function App() {
   const [isSigninPopupOpen, setIsSigninPopupOpen] = useState(false);
   const [isSignupPopupOpen, setIsSignupPopupOpen] = useState(false);
-  const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(true);
+  const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [textColor, setTextColor] = useState("light");
 
   const [currentUser, setCurrentUser] = useState({});
   const [userName, setUserName] = React.useState("");
@@ -59,10 +62,12 @@ function App() {
   };
 
   const handleHeaderSigninClick = () => {
+    setIsMobileMenuOpen(false);
     setIsSigninPopupOpen(true);
   };
 
   const handleHeaderSignoutClick = () => {
+    setIsMobileMenuOpen(false);
     console.log("you are signed out");
   };
 
@@ -76,6 +81,16 @@ function App() {
     setIsSigninPopupOpen(true);
   };
 
+  const handleHomeMobileMenuClick = () => {
+    setTextColor("light");
+    setIsMobileMenuOpen(true);
+  };
+
+  const handleNewsMobileMenuClick = () => {
+    setTextColor("dark");
+    setIsMobileMenuOpen(true);
+  };
+
   /**
    * handle the closing of all popups
    */
@@ -84,6 +99,7 @@ function App() {
     setIsSigninPopupOpen(false);
     setIsSignupPopupOpen(false);
     setIsSuccessPopupOpen(false);
+    setIsMobileMenuOpen(false);
     console.log("popup closed");
   };
 
@@ -213,7 +229,8 @@ function App() {
                 isLoggedIn={true}
                 cards={initialCards}
                 signinClick={() => handleHeaderSigninClick()}
-                signoutClick={() => handleHeaderSignoutClick()}></NewsPage>
+                signoutClick={() => handleHeaderSignoutClick()}
+                mobileMenuClick={() => handleNewsMobileMenuClick()}></NewsPage>
             </>
           </Route>
           <Route path='/'>
@@ -222,7 +239,8 @@ function App() {
                 isLoggedIn={false}
                 cards={initialCards.slice(0, 3)}
                 signinClick={() => handleHeaderSigninClick()}
-                signoutClick={() => handleHeaderSignoutClick()}></HomePage>
+                signoutClick={() => handleHeaderSignoutClick()}
+                mobileMenuClick={() => handleHomeMobileMenuClick()}></HomePage>
             </>
           </Route>
           {/*
@@ -280,6 +298,15 @@ function App() {
         popupName='success'
         isSuccessful={isSuccessful}
         signinClick={() => handleSuccessSigninClick()}
+      />
+      <MobileMenu
+        isLoggedIn={false}
+        isOpen={isMobileMenuOpen}
+        onClose={closeAllPopups}
+        popupName='mobile'
+        hasTextColor={textColor}
+        signinClick={() => handleHeaderSigninClick()}
+        signoutClick={() => handleHeaderSignoutClick()}
       />
     </UserContext.Provider>
   );

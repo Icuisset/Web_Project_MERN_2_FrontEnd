@@ -84,7 +84,7 @@
     background-position: center;
     border: none;
     transition: opacity 0.3s ease;
-    background-image: url('../../images/close-icon-rotated.svg');
+    background-image: url('../../images/close-icon-thin.svg');
     position: absolute;
     top: -36px;
     right: -36px;
@@ -96,6 +96,15 @@
   .close-button:hover {
     opacity: 0.6;
     cursor: pointer;
+  }
+
+  @media screen and (max-width: 600px) {
+    .close-button {
+      top: -32px;
+      right: 0;
+      width: 16px;
+      height: 16px;
+    }
   }
 
 

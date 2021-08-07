@@ -14,6 +14,7 @@ function Homepage(props) {
         textColor={"light"}
         signinClick={props.signinClick}
         signoutClick={props.signoutClick}
+        mobileMenuClick={props.mobileMenuClick}
       />
       <SearchResultsSection cards={props.cards} isHomePage={true} />
       <ResultsLoadingSection></ResultsLoadingSection>

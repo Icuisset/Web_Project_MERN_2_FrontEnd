@@ -5,12 +5,6 @@ import "./HeaderNavBar.css";
 import SigninoutButton from "../SigninoutButton/SigninoutButton";
 
 function HeaderNavBar(props) {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const handleMenuIconClick = () => {
-    setIsMobileMenuOpen(true);
-  };
-
   return (
     <>
       <header className='header__navbar'>
@@ -32,7 +26,7 @@ function HeaderNavBar(props) {
           </Link>
           <button
             type='button'
-            onClick={handleMenuIconClick}
+            onClick={props.mobileMenuClick}
             className={`header__menu-icon header__menu-icon_textcolor_${props.textColor}`}
           />
           <div className='header__signinout'>
