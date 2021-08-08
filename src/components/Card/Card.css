@@ -86,6 +86,12 @@
     display: none;
 }
 
+@media screen and (max-width: 1300px) {
+    .card__message-signin {
+        width: 160px;
+    }
+}
+
 @media screen and (max-width: 900px) {
     .card__message-signin {
         width: 160px;
