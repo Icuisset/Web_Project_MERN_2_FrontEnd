@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./NewsPage.css";
 
@@ -6,12 +6,16 @@ import HeaderNavBar from "../HeaderNavBar/HeaderNavBar";
 import SearchResultsSection from "../SearchResultsSection/SearchResultsSection";
 
 function Newspage(props) {
+
+  const [newsTextColor, setNewsTextColor] = useState("dark");
+  const [isHomePage, setisHomePage] = useState(false);
+
   return (
     <>
       <div className='newspage__header-zone'>
         <HeaderNavBar
           isLoggedIn={props.isLoggedIn}
-          textColor={"dark"}
+          textColor={newsTextColor}
           signinClick={props.signinClick}
           signoutClick={props.signoutClick}
           mobileMenuClick={props.mobileMenuClick}
@@ -27,7 +31,7 @@ function Newspage(props) {
           </span>
         </p>
       </section>
-      <SearchResultsSection cards={props.cards} isHomePage={false} />
+      <SearchResultsSection cards={props.cards} isHomePage={isHomePage} />
     </>
   );
 }

@@ -3,6 +3,15 @@ import React from "react";
 import "./Card.css";
 
 function Card(props) {
+
+  const handleBookmarkClick = () => {
+    console.log("Bookmark has been clicked");
+  };
+
+  const handleDeleteClick = () => {
+    console.log("Remove from saved has been clicked");
+  };
+
   return (
     <li className='card'>
       <img
@@ -16,7 +25,7 @@ function Card(props) {
             className='card__button card__button-bookmark'
             type='button'
             aria-label='card button'
-            onClick=''></button>
+            onClick={handleBookmarkClick}></button>
           <div className='card__message-signin'>Sign in to save articles</div>
         </>
       ) : (
@@ -25,7 +34,7 @@ function Card(props) {
             className='card__button card__button-delete'
             type='button'
             aria-label='card button'
-            onClick=''></button>
+            onClick={handleDeleteClick}></button>
           <div className='card__message-delete'>Remove from saved</div>
           {props.card.keyword ? (
             <div className='card__keyword'>

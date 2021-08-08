@@ -41,7 +41,7 @@ function SignupPopup(props) {
       alternativeLink={"Sign in"}>
       <div className='form__inputs-zone'>
         <div className='form__input-zone'>
-          <label className='form__label' for='profileEmail'>
+          <label className='form__label' htmlFor='profileEmail'>
             Email
           </label>
           <input
@@ -61,7 +61,7 @@ function SignupPopup(props) {
           ) : null}
         </div>
         <div className='form__input-zone'>
-          <label className='form__label' for='profilePassword'>
+          <label className='form__label' htmlFor='profilePassword'>
             Password
           </label>
           <input
@@ -83,7 +83,7 @@ function SignupPopup(props) {
           ) : null}
         </div>
         <div className='form__input-zone'>
-          <label className='form__label' for='username'>
+          <label className='form__label' htmlFor='username'>
             Username
           </label>
           <input

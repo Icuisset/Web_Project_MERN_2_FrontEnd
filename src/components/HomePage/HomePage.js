@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import HeaderSection from "../HeaderSection/HeaderSection";
 import AboutSection from "../AboutSection/AboutSection";
@@ -7,16 +7,21 @@ import ResultsLoadingSection from "../ResultsLoadingSection/ResultsLoadingSectio
 import NothingFoundSection from "../NothingFoundSection/NothingFoundSection";
 
 function Homepage(props) {
+
+  const [homeTextColor, setHomeTextColor] = useState("light");
+  const [isHomePage, setIsHomePage] = useState(true);
+
   return (
     <>
       <HeaderSection
         isLoggedIn={props.isLoggedIn}
-        textColor={"light"}
+        textColor={homeTextColor}
         signinClick={props.signinClick}
         signoutClick={props.signoutClick}
         mobileMenuClick={props.mobileMenuClick}
+        isHomePage={isHomePage}
       />
-      <SearchResultsSection cards={props.cards} isHomePage={true} />
+      <SearchResultsSection cards={props.cards} isHomePage={isHomePage} />
       <ResultsLoadingSection></ResultsLoadingSection>
       <NothingFoundSection></NothingFoundSection>
       <AboutSection />

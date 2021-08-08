@@ -15,9 +15,13 @@ import authorize from "../../utils/authorize";
 function App() {
   const [isSigninPopupOpen, setIsSigninPopupOpen] = useState(false);
   const [isSignupPopupOpen, setIsSignupPopupOpen] = useState(false);
-  const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(true);
+  const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [textColor, setTextColor] = useState("light");
+
+  /* Adding fake constants to remove errors in the console for now ! :-) */
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isNotLoggedIn, setIsNotLoggedIn] = useState(false);
 
   const [currentUser, setCurrentUser] = useState({});
 
@@ -79,7 +83,7 @@ function App() {
           <Route path='/saved-news'>
             <>
               <NewsPage
-                isLoggedIn={true}
+                isLoggedIn={isLoggedIn}
                 cards={initialCards}
                 signinClick={() => handleHeaderSigninClick()}
                 signoutClick={() => handleHeaderSignoutClick()}
@@ -89,7 +93,7 @@ function App() {
           <Route path='/'>
             <>
               <HomePage
-                isLoggedIn={false}
+                isLoggedIn={isNotLoggedIn}
                 cards={initialCards.slice(0, 3)}
                 signinClick={() => handleHeaderSigninClick()}
                 signoutClick={() => handleHeaderSignoutClick()}
@@ -119,7 +123,7 @@ function App() {
         signinClick={() => handleSuccessSigninClick()}
       />
       <MobileMenu
-        isLoggedIn={false}
+        isLoggedIn={isLoggedIn}
         isOpen={isMobileMenuOpen}
         onClose={closeAllPopups}
         popupName='mobile'
