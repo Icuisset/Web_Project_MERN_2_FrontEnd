@@ -11,4 +11,5 @@
     /* Chrome, Safari */
     -moz-osx-font-smoothing: grayscale;
     /* Firefox */
+    overflow: hidden;
   }

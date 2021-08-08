@@ -29,40 +29,44 @@
 
 .popup__container {
   margin: 0 auto;
+  min-width: 430px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
   position: relative;
-  padding: 34px 35px 28px;
   box-sizing: border-box;
 }
 
 .popup__container_type_signin {
   background-color: white;
   border-radius: 16px;
-  min-width: 430px;
   min-height: 380px;
+  padding: 34px 35px 28px;
 }
 
 @media screen and (max-width: 450px) {
   .popup__container_type_signin {
     width: 100%;
     min-height: 530px;
+    padding: 16px;
+    min-width: 320px;
   }
 }
 
 .popup__container_type_signup {
   background-color: white;
   border-radius: 16px;
-  min-width: 430px;
   min-height: 457px;
+  padding: 34px 35px 28px;
 }
 
 @media screen and (max-width: 450px) {
   .popup__container_type_signup {
     width: 100%;
     min-height: 530px;
+    padding: 16px;
+    min-width: 320px;
   }
 }
 
@@ -110,5 +114,11 @@
     right: 0;
     width: 16px;
     height: 16px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .close-button {
+    right: 16px;
   }
 }
