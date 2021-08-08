@@ -140,6 +140,13 @@
     display: none;
 }
 
+@media screen and (max-width: 1300px) {
+    .card__message-delete {
+        top: 76px;
+        right: 24px;
+    }
+}
+
 @media screen and (max-width: 900px) {
     .card__message-delete {
         top: 54px;
