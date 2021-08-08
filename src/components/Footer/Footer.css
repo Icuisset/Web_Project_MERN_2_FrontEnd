@@ -50,6 +50,12 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.footer__link-zone-right {
+  display: flex;
+  align-self: flex-start;
+}
+
 .footer__link {
     color: black;
     text-decoration: none;
@@ -65,9 +71,22 @@
 .footer__icon {
     color: black;
     text-decoration: none;
-    margin-right: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.footer__icon:last-child {
-    margin-right: 0;
+.footer__link-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin : 0;
+}
+
+.footer__link-listItem {
+  display: inline;
+  margin-right: 24px;
+}
+
+.footer__link-listItem:last-child {
+  margin-right: 0;
 }

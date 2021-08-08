@@ -14,10 +14,14 @@ function Footer() {
         <Link className='footer__link' to={'/'}>Home</Link>
         <a className='footer__link' href='https://practicum.yandex.com/' target="_blank">Practicum by Yandex</a>
         </div>
-        <div className="footer__link-zone-right">
+        <ul className="footer__link-zone-right footer__link-list">
+        <li className="footer__link-listItem">
         <a className='footer__icon' href="https://github.com/Icuisset/" target="_blank"><img src={GithubIcon} alt="GitHub icon" /></a>
+        </li>
+        <li lassName="footer__link-listItem">
         <a className='footer__icon' href="https://www.facebook.com/isawabi.london/" target="_blank"><img src={FacebookIcon} alt="Facebook icon" /></a>
-        </div>
+        </li>
+        </ul>
         </div>
         </footer>
     );
