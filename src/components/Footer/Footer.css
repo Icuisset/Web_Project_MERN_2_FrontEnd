@@ -82,11 +82,11 @@
   margin : 0;
 }
 
-.footer__link-listItem {
+.footer__link-listitem {
   display: inline;
   margin-right: 24px;
 }
 
-.footer__link-listItem:last-child {
+.footer__link-listitem:last-child {
   margin-right: 0;
 }
