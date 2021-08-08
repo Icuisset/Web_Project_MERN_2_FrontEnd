@@ -7,7 +7,7 @@ import HeaderNavBar from "../HeaderNavBar/HeaderNavBar";
 
 function HeaderSection(props) {
   return (
-    <div className='header-zone'>
+    <div className='heading-zone'>
       <HeaderNavBar
         isLoggedIn={props.isLoggedIn}
         textColor={props.textColor}
@@ -15,9 +15,9 @@ function HeaderSection(props) {
         signoutClick={props.signoutClick}
         mobileMenuClick={props.mobileMenuClick}
         isHomePage={props.isHomePage}></HeaderNavBar>
-      <div className='header__search'>
-        <h1 className='header__title'>What's going on in the world?</h1>
-        <p className='header__subtitle'>
+      <div className='heading-zone__search'>
+        <h1 className='heading-zone__title'>What's going on in the world?</h1>
+        <p className='heading-zone__subtitle'>
           Find the latest news on any topic and save them in your personal
           account.
         </p>

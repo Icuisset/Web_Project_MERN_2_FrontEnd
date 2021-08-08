@@ -1,4 +1,4 @@
-.header-zone {
+.heading-zone {
     width: 100%;
     margin: 0 auto;
     padding-bottom: 80px;
@@ -12,12 +12,12 @@
 }
 
 @media screen and (max-width: 600px) {
-  .header-zone {
+  .heading-zone {
     padding-bottom: 32px;
   }
 }
 
-  .header__search {
+  .heading-zone__search {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -27,19 +27,19 @@
   }
 
   @media screen and (max-width: 900px) {
-    .header__search {
+    .heading-zone__search {
       max-width: 450px;
     }
   }
 
   @media screen and (max-width: 600px) {
-    .header__search {
+    .heading-zone__search {
       max-width: 285px;
     }
   }
 
   /* NB : title text centered to improve design */
-  .header__title {
+  .heading-zone__title {
     margin-top: 80px;
     margin-bottom: 32px;
     font-family: 'Roboto Slab',Arial, sans-serif;
@@ -50,7 +50,7 @@
   }
 
   @media screen and (max-width: 900px) {
-    .header__title {
+    .heading-zone__title {
       margin-top: 38px;
       margin-bottom: 16px;
       font-size: 36px;
@@ -59,25 +59,25 @@
   }
 
   @media screen and (max-width: 600px) {
-    .header__title {
+    .heading-zone__title {
       margin-top: 30px;
     }
   }
 
-  .header__subtitle {
+  .heading-zone__subtitle {
     margin-top : 0;
     margin-bottom : 88px;
     text-align: center;
   }
 
   @media screen and (max-width: 900px) {
-    .header__subtitle {
+    .heading-zone__subtitle {
       margin-bottom: 48px;
    }
   }
 
   @media screen and (max-width: 600px) {
-    .header__subtitle {
+    .heading-zone__subtitle {
       margin-bottom: 122px;
    }
   }
