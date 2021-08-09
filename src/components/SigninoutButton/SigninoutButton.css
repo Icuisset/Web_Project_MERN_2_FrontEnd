@@ -1,0 +1,72 @@
+.signin {
+  border-radius: 100px;
+  padding: 10px 60px 10px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+}
+
+.signin:hover {
+  cursor: pointer;
+}
+
+.signin_textcolor_light {
+  color: white;
+  border: 1px solid white;
+}
+
+.signin_textcolor_dark {
+  color: #1A1B22;
+  border: 1px solid #1A1B22;
+}
+
+@media screen and (max-width: 900px) {
+  .signin {
+    font-size: 16px;
+  }
+}
+
+.signout {
+  border-radius: 100px;
+  padding: 10px 20px 10px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signout:hover {
+  cursor: pointer;
+}
+
+.signout_textcolor_light {
+  border: 1px solid white;
+  color: white;
+}
+
+.signout_textcolor_dark {
+  border: 1px solid #D1D2D6;
+  color: #1A1B22;
+}
+
+@media screen and (max-width: 900px) {
+  .signout {
+    font-size: 16px;
+  }
+}
+
+.signout__logo {
+  margin-left: 10px;
+}
+
+.button_type_mobile {
+  align-self: flex-start;
+}
+
+@media screen and (max-width: 450px) {
+  .button_type_mobile {
+    align-self: stretch;
+  }
+}

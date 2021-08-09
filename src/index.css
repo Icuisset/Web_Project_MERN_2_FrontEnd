@@ -1,0 +1,17 @@
+@import url('./vendor/normalize.css');
+@import url('./vendor/fonts.css');
+
+body {
+    margin: 0 auto;
+    min-width: 320px;
+    font-family: 'Roboto', Arial, sans-serif;
+    color: #1A1B22;
+    font-size: 18px;
+    line-height: 24px;
+    background-color: white;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    /* Chrome, Safari */
+    -moz-osx-font-smoothing: grayscale;
+    /* Firefox */
+  }

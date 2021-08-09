@@ -1,0 +1,111 @@
+.header__navbar {
+    padding: 4px 104px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.2);
+}
+
+@media screen and (max-width: 900px) {
+    .header__navbar {
+        padding: 2px 40px 0;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .header__navbar {
+        padding: 16px;
+    }
+}
+
+.header__logo {
+    font-family: 'Roboto Slab', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    text-decoration: none;
+}
+
+.header__logo_textcolor_light {
+    color: #fff;
+}
+
+.header__logo_textcolor_dark {
+    color: #1A1B22;
+}
+
+.header__navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__link {
+    color: #B6BCBF;
+    font-weight: 500;
+    text-decoration: none;
+    margin-right: 42px;
+    padding: 26px 10px 26px;
+}
+
+.header__link_textcolor_light {
+    color: #B6BCBF;
+}
+
+.header__link_textcolor_dark {
+    color: #1A1B22;
+}
+
+@media screen and (max-width: 900px) {
+    .header__link {
+        font-size: 16px;
+        margin-right: 16px;
+        padding: 20px 10px 20px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .header__link {
+        display: none;
+    }
+}
+
+.header__link_focused_home {
+    border-bottom: #fff 2px solid;
+    color:white;
+}
+
+.header__link_focused_news {
+    border-bottom: #1A1B22 2px solid;
+}
+
+.header__menu-icon {
+    background-position: cover;
+    width: 24px;
+    height: 24px;
+    display: none;
+    background-color: transparent;
+    border: none;
+}
+
+.header__menu-icon_textcolor_dark {
+    background: url("../../images/menu-icon-black.svg") 50% 50% no-repeat;
+}
+
+.header__menu-icon_textcolor_light {
+    background: url("../../images/menu-icon.svg") 50% 50% no-repeat;
+}
+
+@media screen and (max-width: 650px) {
+    .header__menu-icon {
+        display: inline-block;
+    }
+
+    .header__signinout {
+        display: none;
+    }
+}
+
+.header__menu-icon:hover {
+    cursor: pointer;
+}
