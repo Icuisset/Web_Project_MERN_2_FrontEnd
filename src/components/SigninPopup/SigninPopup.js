@@ -22,6 +22,10 @@ function SigninPopup(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(event);
+    props.onSignin({
+      email,
+      password,
+    });
   };
 
   return (

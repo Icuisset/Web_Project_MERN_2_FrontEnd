@@ -6,7 +6,7 @@ import PopupWithForm from "../PopupWithForm/PopupWithForm";
 function SignupPopup(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   /* below states are only to test CSS for now */
   const [inputsAreValid, setInputsAreValid] = React.useState(true);
   const [errorEmail, setErrorEmail] = React.useState(true);
@@ -22,13 +22,18 @@ function SignupPopup(props) {
     setPassword(event.target.value);
   };
 
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
+  const handleNameChange = (event) => {
+    setName(event.target.value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(event);
+    props.onSignup({
+      name,
+      email,
+      password,
+    });
   };
 
   return (
@@ -83,17 +88,17 @@ function SignupPopup(props) {
           ) : null}
         </div>
         <div className='form__input-zone'>
-          <label className='form__label' htmlFor='username'>
+          <label className='form__label' htmlFor='name'>
             Username
           </label>
           <input
-            id='username'
+            id='name'
             className='form__input'
             name='usernameInput'
             placeholder='Enter your username'
             type='text'
-            value={username}
-            onChange={handleUsernameChange}
+            value={name}
+            onChange={handleNameChange}
             required
             minLength={2}
             maxLength={40}

@@ -67,8 +67,8 @@ class MainApi {
 }
 
 
-const mainApi = new MainApi({
+const api = new MainApi({
   baseUrl: 'https://api.news-explorer.info',
 })
 
-export default mainApi;
+export default api;
