@@ -13,22 +13,29 @@ import MobileMenu from "../MobileMenu/MobileMenu";
 import initialCards from "../../utils/initialCards";
 import authorize from "../../utils/authorize";
 import api from "../../utils/MainApi";
+import newsApi from "../../utils/NewsApi";
 
 function App() {
-  const [isSigninPopupOpen, setIsSigninPopupOpen] = React.useState(false);
-  const [isSignupPopupOpen, setIsSignupPopupOpen] = React.useState(false);
-  const [isSuccessPopupOpen, setIsSuccessPopupOpen] = React.useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
-  const [textColor, setTextColor] = React.useState("light");
+  const [isSigninPopupOpen, setIsSigninPopupOpen] = useState(false);
+  const [isSignupPopupOpen, setIsSignupPopupOpen] = useState(false);
+  const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [textColor, setTextColor] = useState("light");
 
-  const [currentUser, setCurrentUser] = React.useState({});
-  const [userEmail, setUserEmail] = React.useState("");
-  const [userName, setUserName] = React.useState("");
+  const [currentUser, setCurrentUser] = useState({});
+  const [userEmail, setUserEmail] = useState("");
+  const [userName, setUserName] = useState("");
 
   const [articles, setArticles] = useState([]);
 
-  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
-  const [popupErrorMessage, setPopupErrorMessage] = React.useState("");
+  const [searchKeyword, setSearchKeyword] = useState("");
+  const [cards, setCards] = useState([]);
+  const [numberCardsShown, setNumberCardsShown] = useState("3");
+  const [isLoading, setIsLoading] = useState(false);
+  const [searchError, setSearchError] = useState(false);
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [popupErrorMessage, setPopupErrorMessage] = useState("");
 
   const [token, setToken] = useState(localStorage.getItem("token"));
 
@@ -207,6 +214,23 @@ function App() {
   };
 
   /**
+   * handle search in news api
+   */
+
+  const handleArticleSearch = (keyword) => {
+    newsApi
+      .getNewsResults(keyword)
+      .then((result) => {
+        console.log(result.articles);
+        setCards(result.articles);
+        setSearchKeyword(keyword);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  /**
    * handle all general click actions
    */
 
@@ -278,7 +302,9 @@ function App() {
               <HomePage
                 isLoggedIn={isLoggedIn}
                 userName={userName}
-                cards={initialCards.slice(0, 3)}
+                cards={cards.slice(0, 3)}
+                keyword={searchKeyword}
+                onSearch={handleArticleSearch}
                 signinClick={() => handleHeaderSigninClick()}
                 signoutClick={() => handleHeaderSignoutClick()}
                 mobileMenuClick={() => handleHomeMobileMenuClick()}></HomePage>

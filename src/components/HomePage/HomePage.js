@@ -21,8 +21,9 @@ function Homepage(props) {
         mobileMenuClick={props.mobileMenuClick}
         isHomePage={isHomePage}
         userName={props.userName}
+        onSearch={props.onSearch}
       />
-      <SearchResultsSection cards={props.cards} isHomePage={isHomePage} />
+      <SearchResultsSection cards={props.cards} keyword={props.keyword} isHomePage={isHomePage} />
       <ResultsLoadingSection></ResultsLoadingSection>
       <NothingFoundSection></NothingFoundSection>
       <AboutSection />

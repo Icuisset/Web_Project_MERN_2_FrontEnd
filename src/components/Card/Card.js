@@ -4,6 +4,9 @@ import "./Card.css";
 
 function Card(props) {
 
+  const date = new Date(props.card.publishedAt);
+  const formattedDate = `${date.toLocaleString('en-us', { month: 'long' })} ${date.getDate()}, ${date.getFullYear()}`;
+
   const handleBookmarkClick = () => {
     console.log("Bookmark has been clicked");
   };
@@ -15,7 +18,7 @@ function Card(props) {
   return (
     <li className='card'>
       <img
-        src={props.card.image}
+        src={props.card.urlToImage}
         alt={props.card.title}
         className='card__image'
       />
@@ -36,20 +39,20 @@ function Card(props) {
             aria-label='card button'
             onClick={handleDeleteClick}></button>
           <div className='card__message-delete'>Remove from saved</div>
-          {props.card.keyword ? (
+          {props.keyword ? (
             <div className='card__keyword'>
-              <p className='card__keyword-text'>{props.card.keyword}</p>
+              <p className='card__keyword-text'>{props.keyword}</p>
             </div>
           ) : null}
         </>
       )}
       <div className='card__text-zone'>
         <div>
-          <p className='card__date'>{props.card.date}</p>
+          <p className='card__date'>{props.card.publishedAt}</p>
           <h2 className='card__title'>{props.card.title}</h2>
-          <p className='card__text'>{props.card.text}</p>
+          <p className='card__text'>{props.card.content}</p>
         </div>
-        <p className='card__source'>{props.card.source}</p>
+        <p className='card__source'>{props.card.source.name}</p>
       </div>
     </li>
   );
