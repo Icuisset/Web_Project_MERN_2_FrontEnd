@@ -10,7 +10,7 @@ function SigninoutButton(props) {
           className={`signout signout_textcolor_${props.textColor} ${props.isMobileMenu && "button_type_mobile"}`}
           type='button'
           onClick={props.signoutClick}>
-          Elise
+          {props.userName}
           {props.textColor === "dark" ? (
             <svg
               className='signout__logo'

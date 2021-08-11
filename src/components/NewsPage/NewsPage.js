@@ -10,6 +10,8 @@ function Newspage(props) {
   const [newsTextColor, setNewsTextColor] = useState("dark");
   const [isHomePage, setisHomePage] = useState(false);
 
+  const newsTitle = props.userName + ", you have 5 saved articles";
+
   return (
     <>
       <div className='newspage__header-zone'>
@@ -19,11 +21,12 @@ function Newspage(props) {
           signinClick={props.signinClick}
           signoutClick={props.signoutClick}
           mobileMenuClick={props.mobileMenuClick}
-          isNewsPage={true}></HeaderNavBar>
+          isNewsPage={true}
+          userName={props.userName}></HeaderNavBar>
       </div>
       <section className='newspage__top-section'>
         <p className='newspage__subtitle'>Saved articles</p>
-        <h1 className='newspage__title'>Elise, you have 5 saved articles</h1>
+        <h1 className='newspage__title'>{newsTitle}</h1>
         <p className='newspage__keywords'>
           By keywords:
           <span>

@@ -140,6 +140,7 @@ function App() {
         .then((result) => {
           console.log(result);
           setCurrentUser(result);
+          setUserName(result.name);
         })
         .catch((err) => {
           console.log(err);
@@ -261,20 +262,22 @@ function App() {
     <UserContext.Provider value={currentUser}>
       <>
         <Switch>
-          <Route path='/saved-news'>
-            <>
-              <NewsPage
-                isLoggedIn={isLoggedIn}
-                cards={initialCards}
-                signinClick={() => handleHeaderSigninClick()}
-                signoutClick={() => handleHeaderSignoutClick()}
-                mobileMenuClick={() => handleNewsMobileMenuClick()}></NewsPage>
-            </>
-          </Route>
+          <ProtectedRoute
+            path='/saved-news'
+            component={NewsPage}
+            isLoggedIn={isLoggedIn}
+            userName={userName}
+            cards={initialCards}
+            signinClick={() => handleHeaderSigninClick()}
+            signoutClick={() => handleHeaderSignoutClick()}
+            mobileMenuClick={() => handleNewsMobileMenuClick()}
+          />
+
           <Route path='/'>
             <>
               <HomePage
                 isLoggedIn={isLoggedIn}
+                userName={userName}
                 cards={initialCards.slice(0, 3)}
                 signinClick={() => handleHeaderSigninClick()}
                 signoutClick={() => handleHeaderSignoutClick()}

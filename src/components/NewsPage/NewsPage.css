@@ -54,6 +54,10 @@
     max-width: 450px;
 }
 
+.newspage__title:first-letter {
+    text-transform: uppercase;
+}
+
 @media screen and (max-width: 900px) {
     .newspage__title {
         font-size: 30px;

@@ -20,6 +20,7 @@ function Homepage(props) {
         signoutClick={props.signoutClick}
         mobileMenuClick={props.mobileMenuClick}
         isHomePage={isHomePage}
+        userName={props.userName}
       />
       <SearchResultsSection cards={props.cards} isHomePage={isHomePage} />
       <ResultsLoadingSection></ResultsLoadingSection>
