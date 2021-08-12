@@ -48,7 +48,7 @@ function Card(props) {
       )}
       <div className='card__text-zone'>
         <div>
-          <p className='card__date'>{props.card.publishedAt}</p>
+          <p className='card__date'>{formattedDate}</p>
           <h2 className='card__title'>{props.card.title}</h2>
           <p className='card__text'>{props.card.content}</p>
         </div>
