@@ -117,9 +117,13 @@ function App() {
 
   useEffect(() => {
     const JWT = localStorage.getItem("jwt");
+    const KEYWORD = localStorage.getItem("kwd");
     console.log(JWT);
     if (JWT) {
       handleCheckTokenIsValid(JWT);
+    }
+    if (KEYWORD) {
+      handleArticleSearch(KEYWORD);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -225,6 +229,7 @@ function App() {
         console.log(result.articles);
         setCards(result.articles);
         setSearchKeyword(keyword);
+        localStorage.setItem("kwd", keyword);
       })
       .catch((err) => {
         console.log(err);
@@ -272,7 +277,7 @@ function App() {
   };
 
   /**
-   * handle search number of article shown
+   * handle number of articles shown
    */
 
   const handleShowMoreButtonClick = () => {
