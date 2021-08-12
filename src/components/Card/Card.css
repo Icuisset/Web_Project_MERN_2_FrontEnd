@@ -9,20 +9,20 @@
 
 .card__image {
     width: 100%;
-    min-height: 272px;
+    height: 272px;
     object-fit: cover; 
 }
 
 
 @media screen and (max-width: 900px) {
     .card__image {
-        min-height: 150px;
+        height: 150px;
     }
 }
 
 @media screen and (max-width: 600px) {
     .card__image {
-        min-height: 196px;
+        height: 196px;
     }
 }
 

@@ -5,10 +5,6 @@ import Cards from "../Cards/Cards";
 import newsApi from "../../utils/NewsApi";
 
 function SearchResultsSection(props) {
-  const handleSearchResultsClick = () => {
-    console.log("Search Results button has been clicked");
-  };
-
   return (
     <section className='searchResults'>
       <Cards
@@ -16,12 +12,12 @@ function SearchResultsSection(props) {
         isHomePage={props.isHomePage}
         keyword={props.keyword}
       />
-      {props.cards.length === 3 ? (
+      {props.cards.length !== 0 ? (
         <button
           className='searchResults__showmoreButton'
           type='button'
           aria-label='show more'
-          onClick={handleSearchResultsClick}>
+          onClick={props.showMore}>
           Show more
         </button>
       ) : null}

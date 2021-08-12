@@ -221,6 +221,7 @@ function App() {
     newsApi
       .getNewsResults(keyword)
       .then((result) => {
+        setNumberCardsShown("3");
         console.log(result.articles);
         setCards(result.articles);
         setSearchKeyword(keyword);
@@ -271,6 +272,16 @@ function App() {
   };
 
   /**
+   * handle search number of article shown
+   */
+
+  const handleShowMoreButtonClick = () => {
+    const newCardNumber = Number(numberCardsShown) + 3;
+    console.log(newCardNumber);
+    setNumberCardsShown(newCardNumber);
+  };
+
+  /**
    * handle the closing of all popups
    */
 
@@ -302,9 +313,10 @@ function App() {
               <HomePage
                 isLoggedIn={isLoggedIn}
                 userName={userName}
-                cards={cards.slice(0, 3)}
+                cards={cards.slice(0, numberCardsShown)}
                 keyword={searchKeyword}
                 onSearch={handleArticleSearch}
+                showMore={handleShowMoreButtonClick}
                 signinClick={() => handleHeaderSigninClick()}
                 signoutClick={() => handleHeaderSignoutClick()}
                 mobileMenuClick={() => handleHomeMobileMenuClick()}></HomePage>

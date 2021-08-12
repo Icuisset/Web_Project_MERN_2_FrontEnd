@@ -23,7 +23,7 @@ function Homepage(props) {
         userName={props.userName}
         onSearch={props.onSearch}
       />
-      <SearchResultsSection cards={props.cards} keyword={props.keyword} isHomePage={isHomePage} />
+      <SearchResultsSection cards={props.cards} keyword={props.keyword} isHomePage={isHomePage} showMore={props.showMore} />
       <ResultsLoadingSection></ResultsLoadingSection>
       <NothingFoundSection></NothingFoundSection>
       <AboutSection />
