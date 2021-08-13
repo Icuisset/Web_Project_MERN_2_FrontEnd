@@ -52,14 +52,26 @@
     }
 }
 
-.card__button-bookmark {
+.card__button-bookmark_signedin_no {
     background: url(../../images/bookmark-inactive.svg) 50% 50% no-repeat;
     background-color: white;
     transition: background-image 300ms;
 }
 
-.card__button-bookmark:hover {
+.card__button-bookmark_signedin_no:hover {
     background: url(../../images/bookmark-active.svg) 50% 50% no-repeat;
+    background-color: white;
+    cursor: pointer;
+}
+
+.card__button-bookmark_signedin_yes {
+    background: url(../../images/bookmark-inactive.svg) 50% 50% no-repeat;
+    background-color: white;
+    transition: background-image 300ms;
+}
+
+.card__button-bookmark_signedin_yes:hover {
+    background: url(../../images/bookmark-pressed.svg) 50% 50% no-repeat;
     background-color: white;
     cursor: pointer;
 }
@@ -111,7 +123,7 @@
     }
 }
 
-.card__button-bookmark:hover + .card__message-signin {
+.card__button-bookmark_signedin_no:hover + .card__message-signin {
     display: flex;
     align-items: center;
     justify-content: center;

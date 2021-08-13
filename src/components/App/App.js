@@ -184,15 +184,15 @@ function App() {
    * handle updates to the main api
    */
 
-  const handleAddArticle = ({
+  const handleAddArticle = (
     keyword,
     title,
     text,
     date,
     source,
     link,
-    image,
-  }) => {
+    image
+  ) => {
     console.log(keyword, title, text, date, source, link, image);
     api
       .postNewArticle(keyword, title, text, date, source, link, image, token)
@@ -335,6 +335,7 @@ function App() {
                 isSearchError={isSearchError}
                 cards={cards.slice(0, numberCardsShown)}
                 keyword={searchKeyword}
+                onArticleSave={handleAddArticle}
                 onSearch={handleArticleSearch}
                 showMore={handleShowMoreButtonClick}
                 signinClick={() => handleHeaderSigninClick()}

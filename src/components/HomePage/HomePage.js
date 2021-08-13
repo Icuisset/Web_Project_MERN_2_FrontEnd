@@ -29,6 +29,8 @@ function Homepage(props) {
           keyword={props.keyword}
           isHomePage={isHomePage}
           showMore={props.showMore}
+          isLoggedIn={props.isLoggedIn}
+          onArticleSave={props.onArticleSave}
         />
       )}
       {props.isSearchError ? <SearchErrorSection></SearchErrorSection> : null}

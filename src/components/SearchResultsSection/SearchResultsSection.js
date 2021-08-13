@@ -11,6 +11,8 @@ function SearchResultsSection(props) {
         cards={props.cards}
         isHomePage={props.isHomePage}
         keyword={props.keyword}
+        isLoggedIn={props.isLoggedIn}
+        onArticleSave={props.onArticleSave}
       />
       {props.cards.length !== 0 ? (
         <button

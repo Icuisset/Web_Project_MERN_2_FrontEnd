@@ -1,14 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./Card.css";
 
 function Card(props) {
-
   const date = new Date(props.card.publishedAt);
-  const formattedDate = `${date.toLocaleString('en-us', { month: 'long' })} ${date.getDate()}, ${date.getFullYear()}`;
+  const formattedDate = `${date.toLocaleString("en-us", {
+    month: "long",
+  })} ${date.getDate()}, ${date.getFullYear()}`;
+
+  const truncatedTitle = props.card.title.slice(0, 29);
+  const truncatedContent = props.card.title.slice(0, 499);
 
   const handleBookmarkClick = () => {
-    console.log("Bookmark has been clicked");
+    props.isLoggedIn
+      ? props.onArticleSave(
+          props.keyword,
+          truncatedTitle,
+          truncatedContent,
+          formattedDate,
+          props.card.source.name,
+          props.card.url,
+          props.card.urlToImage
+        )
+      : console.log("you're not logged in");
+    console.log(truncatedContent);
   };
 
   const handleDeleteClick = () => {
@@ -25,7 +40,11 @@ function Card(props) {
       {props.isHomePage ? (
         <>
           <button
-            className='card__button card__button-bookmark'
+            className={
+              props.isLoggedIn
+                ? "card__button card__button-bookmark_signedin_yes"
+                : "card__button card__button-bookmark_signedin_no"
+            }
             type='button'
             aria-label='card button'
             onClick={handleBookmarkClick}></button>

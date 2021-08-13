@@ -13,9 +13,10 @@ function Cards(props) {
                 keyword={props.keyword}
                 key={index}
                 card={card}
-                onCardSave={props.onCardSave}
+                onArticleSave={props.onArticleSave}
                 onCardDelete={props.onCardDelete}
                 isHomePage={props.isHomePage}
+                isLoggedIn={props.isLoggedIn}
               />
             ))}
           </ul>
