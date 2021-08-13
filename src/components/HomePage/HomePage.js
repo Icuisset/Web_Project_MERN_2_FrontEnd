@@ -7,7 +7,6 @@ import ResultsLoadingSection from "../ResultsLoadingSection/ResultsLoadingSectio
 import NothingFoundSection from "../NothingFoundSection/NothingFoundSection";
 
 function Homepage(props) {
-
   const [homeTextColor, setHomeTextColor] = useState("light");
   const [isHomePage, setIsHomePage] = useState(true);
 
@@ -23,8 +22,15 @@ function Homepage(props) {
         userName={props.userName}
         onSearch={props.onSearch}
       />
-      <SearchResultsSection cards={props.cards} keyword={props.keyword} isHomePage={isHomePage} showMore={props.showMore} />
-      <ResultsLoadingSection></ResultsLoadingSection>
+      {props.isLoading ? null : (
+        <SearchResultsSection
+          cards={props.cards}
+          keyword={props.keyword}
+          isHomePage={isHomePage}
+          showMore={props.showMore}
+        />
+      )}
+      {props.isLoading ? <ResultsLoadingSection></ResultsLoadingSection> : null}
       <NothingFoundSection></NothingFoundSection>
       <AboutSection />
     </>

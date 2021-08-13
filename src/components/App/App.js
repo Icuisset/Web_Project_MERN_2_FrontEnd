@@ -222,6 +222,7 @@ function App() {
    */
 
   const handleArticleSearch = (keyword) => {
+    setIsLoading(true);
     newsApi
       .getNewsResults(keyword)
       .then((result) => {
@@ -230,6 +231,7 @@ function App() {
         setCards(result.articles);
         setSearchKeyword(keyword);
         localStorage.setItem("kwd", keyword);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -318,6 +320,7 @@ function App() {
               <HomePage
                 isLoggedIn={isLoggedIn}
                 userName={userName}
+                isLoading={isLoading}
                 cards={cards.slice(0, numberCardsShown)}
                 keyword={searchKeyword}
                 onSearch={handleArticleSearch}
