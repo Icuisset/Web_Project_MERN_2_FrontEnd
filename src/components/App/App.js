@@ -28,6 +28,8 @@ function App() {
   const [userName, setUserName] = useState("");
 
   const [articles, setArticles] = useState([]);
+  const [savedArticles, setSavedArticles] = useState([]);
+  const [savedlinkIds, setSavedlinkIds] = useState([]);
 
   const [searchKeyword, setSearchKeyword] = useState("");
   const [cards, setCards] = useState([]);
@@ -198,22 +200,21 @@ function App() {
       .postNewArticle(keyword, title, text, date, source, link, image, token)
       .then((newArticle) => {
         console.log(newArticle);
-        setArticles([newArticle, ...articles]);
-        closeAllPopups();
+        console.log(newArticle._id, newArticle.link);
+        setSavedArticles([newArticle, ...savedArticles]);
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  const handleDeleteArticle = (article) => {
+  const handleDeleteArticle = (id) => {
     api
-      .deleteCard(article._id, token)
+      .deleteArticle(id, token)
       .then((result) => {
         console.log(result);
-        const newArticles = articles.filter((a) => a._id !== article._id);
-        console.log(newArticles);
-        setArticles(newArticles);
+        const newSavedArticles = savedArticles.filter((a) => a._id !== id);
+        setSavedArticles(newSavedArticles);
       })
       .catch((err) => {
         console.log(err);
@@ -335,7 +336,9 @@ function App() {
                 isSearchError={isSearchError}
                 cards={cards.slice(0, numberCardsShown)}
                 keyword={searchKeyword}
+                savedArticles={savedArticles}
                 onArticleSave={handleAddArticle}
+                onArticleDelete={handleDeleteArticle}
                 onSearch={handleArticleSearch}
                 showMore={handleShowMoreButtonClick}
                 signinClick={() => handleHeaderSigninClick()}

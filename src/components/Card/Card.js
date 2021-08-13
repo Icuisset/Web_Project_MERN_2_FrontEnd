@@ -11,9 +11,12 @@ function Card(props) {
   const truncatedTitle = props.card.title.slice(0, 29);
   const truncatedContent = props.card.title.slice(0, 499);
 
+  const [isSaved, setIsSaved] = useState(false);
+
   const handleBookmarkClick = () => {
-    props.isLoggedIn
-      ? props.onArticleSave(
+    if (props.isLoggedIn) {
+      if (!isSaved) {
+        props.onArticleSave(
           props.keyword,
           truncatedTitle,
           truncatedContent,
@@ -21,9 +24,18 @@ function Card(props) {
           props.card.source.name,
           props.card.url,
           props.card.urlToImage
-        )
-      : console.log("you're not logged in");
-    console.log(truncatedContent);
+        );
+        setIsSaved(true);
+      } else {
+        const articleToDelete = props.savedArticles.find(
+          (article) => article.link === props.card.url
+        );
+        props.onArticleDelete(articleToDelete._id);
+        setIsSaved(false);
+      }
+    } else {
+      console.log("you're not logged in");
+    }
   };
 
   const handleDeleteClick = () => {
@@ -40,11 +52,12 @@ function Card(props) {
       {props.isHomePage ? (
         <>
           <button
-            className={
+            className={`card__button ${
               props.isLoggedIn
-                ? "card__button card__button-bookmark_signedin_yes"
-                : "card__button card__button-bookmark_signedin_no"
-            }
+                ? "card__button-bookmark_signedin_yes"
+                : "card__button-bookmark_signedin_no"
+            } ${isSaved ? "card__button-bookmark_saved" : null}
+            `}
             type='button'
             aria-label='card button'
             onClick={handleBookmarkClick}></button>

@@ -14,7 +14,8 @@ function Cards(props) {
                 key={index}
                 card={card}
                 onArticleSave={props.onArticleSave}
-                onCardDelete={props.onCardDelete}
+                onArticleDelete={props.onArticleDelete}
+                savedArticles={props.savedArticles}
                 isHomePage={props.isHomePage}
                 isLoggedIn={props.isLoggedIn}
               />

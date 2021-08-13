@@ -13,6 +13,8 @@ function SearchResultsSection(props) {
         keyword={props.keyword}
         isLoggedIn={props.isLoggedIn}
         onArticleSave={props.onArticleSave}
+        onArticleDelete={props.onArticleDelete}
+        savedArticles={props.savedArticles}
       />
       {props.cards.length !== 0 ? (
         <button

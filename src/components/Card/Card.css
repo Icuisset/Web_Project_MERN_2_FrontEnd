@@ -76,6 +76,11 @@
     cursor: pointer;
 }
 
+.card__button-bookmark_saved {
+    background: url(../../images/bookmark-pressed.svg) 50% 50% no-repeat;
+    background-color: white;
+}
+
 .card__button-bookmark_active {
     background: url(../../images/bookmark-active.svg) 50% 50% no-repeat;
     background-color: white;

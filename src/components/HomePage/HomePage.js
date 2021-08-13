@@ -31,6 +31,8 @@ function Homepage(props) {
           showMore={props.showMore}
           isLoggedIn={props.isLoggedIn}
           onArticleSave={props.onArticleSave}
+          onArticleDelete={props.onArticleDelete}
+          savedArticles={props.savedArticles}
         />
       )}
       {props.isSearchError ? <SearchErrorSection></SearchErrorSection> : null}
