@@ -20,11 +20,19 @@ function Card(props) {
 
   const [isSavedinAPI, setisSavedinAPI] = useState(indexAlreadySaved <= -1);
 
+  useEffect(() => {
+    if (indexAlreadySaved <= -1) {
+      setisSavedinAPI(false);
+    } else {
+      setisSavedinAPI(true);
+    }
+    console.log(indexAlreadySaved);
+  }, [user]);
   const [isSaved, setIsSaved] = useState(false);
 
   const handleBookmarkClick = () => {
     if (props.isLoggedIn) {
-      if (!isSaved) {
+      if (!isSaved || !isSavedinAPI) {
         props.onArticleSave(
           props.keyword,
           truncatedTitle,
@@ -66,7 +74,7 @@ function Card(props) {
               props.isLoggedIn
                 ? "card__button-bookmark_signedin_yes"
                 : "card__button-bookmark_signedin_no"
-            } ${isSaved || isSavedinAPI ? "card__button-bookmark_saved" : null}
+            } ${isSavedinAPI || isSaved ? "card__button-bookmark_saved" : null}
             `}
             type='button'
             aria-label='card button'
