@@ -5,6 +5,7 @@ import AboutSection from "../AboutSection/AboutSection";
 import SearchResultsSection from "../SearchResultsSection/SearchResultsSection";
 import ResultsLoadingSection from "../ResultsLoadingSection/ResultsLoadingSection";
 import NothingFoundSection from "../NothingFoundSection/NothingFoundSection";
+import SearchErrorSection from "../SearchError/SearchError";
 
 function Homepage(props) {
   const [homeTextColor, setHomeTextColor] = useState("light");
@@ -22,7 +23,7 @@ function Homepage(props) {
         userName={props.userName}
         onSearch={props.onSearch}
       />
-      {props.isLoading || props.noArticleFound ? null : (
+      {props.isLoading || props.noArticleFound || props.isSearchError ? null : (
         <SearchResultsSection
           cards={props.cards}
           keyword={props.keyword}
@@ -30,6 +31,7 @@ function Homepage(props) {
           showMore={props.showMore}
         />
       )}
+      {props.isSearchError ? <SearchErrorSection></SearchErrorSection> : null}
       {props.isLoading ? <ResultsLoadingSection></ResultsLoadingSection> : null}
       {props.noArticleFound ? (
         <NothingFoundSection></NothingFoundSection>

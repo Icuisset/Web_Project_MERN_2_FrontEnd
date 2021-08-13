@@ -34,6 +34,7 @@ function App() {
   const [numberCardsShown, setNumberCardsShown] = useState("3");
   const [isLoading, setIsLoading] = useState(false);
   const [noArticleFound, setNoArticleFound] = useState(false);
+  const [isSearchError, setIsSearchError] = useState(false);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [popupErrorMessage, setPopupErrorMessage] = useState("");
@@ -119,7 +120,7 @@ function App() {
   useEffect(() => {
     const JWT = localStorage.getItem("jwt");
     const KEYWORD = localStorage.getItem("kwd");
-    setNoArticleFound(false);
+
     console.log(JWT);
     if (JWT) {
       handleCheckTokenIsValid(JWT);
@@ -238,9 +239,12 @@ function App() {
         setSearchKeyword(keyword);
         localStorage.setItem("kwd", keyword);
         setIsLoading(false);
+        setIsSearchError(false);
       })
       .catch((err) => {
         console.log(err);
+        setIsSearchError(true);
+        setIsLoading(false);
       });
   };
 
@@ -328,6 +332,7 @@ function App() {
                 userName={userName}
                 isLoading={isLoading}
                 noArticleFound={noArticleFound}
+                isSearchError={isSearchError}
                 cards={cards.slice(0, numberCardsShown)}
                 keyword={searchKeyword}
                 onSearch={handleArticleSearch}
