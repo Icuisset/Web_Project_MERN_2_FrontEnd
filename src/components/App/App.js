@@ -14,6 +14,7 @@ import initialCards from "../../utils/initialCards";
 import authorize from "../../utils/authorize";
 import api from "../../utils/MainApi";
 import newsApi from "../../utils/NewsApi";
+import ResultsLoadingSection from "../ResultsLoadingSection/ResultsLoadingSection";
 
 function App() {
   const [isSigninPopupOpen, setIsSigninPopupOpen] = useState(false);
@@ -32,7 +33,7 @@ function App() {
   const [cards, setCards] = useState([]);
   const [numberCardsShown, setNumberCardsShown] = useState("3");
   const [isLoading, setIsLoading] = useState(false);
-  const [searchError, setSearchError] = useState(false);
+  const [noArticleFound, setNoArticleFound] = useState(false);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [popupErrorMessage, setPopupErrorMessage] = useState("");
@@ -118,6 +119,7 @@ function App() {
   useEffect(() => {
     const JWT = localStorage.getItem("jwt");
     const KEYWORD = localStorage.getItem("kwd");
+    setNoArticleFound(false);
     console.log(JWT);
     if (JWT) {
       handleCheckTokenIsValid(JWT);
@@ -223,9 +225,13 @@ function App() {
 
   const handleArticleSearch = (keyword) => {
     setIsLoading(true);
+    setNoArticleFound(false);
     newsApi
       .getNewsResults(keyword)
       .then((result) => {
+        if (result.articles.length === 0) {
+          setNoArticleFound(true);
+        }
         setNumberCardsShown("3");
         console.log(result.articles);
         setCards(result.articles);
@@ -321,6 +327,7 @@ function App() {
                 isLoggedIn={isLoggedIn}
                 userName={userName}
                 isLoading={isLoading}
+                noArticleFound={noArticleFound}
                 cards={cards.slice(0, numberCardsShown)}
                 keyword={searchKeyword}
                 onSearch={handleArticleSearch}

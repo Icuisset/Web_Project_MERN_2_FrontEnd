@@ -22,7 +22,7 @@ function Homepage(props) {
         userName={props.userName}
         onSearch={props.onSearch}
       />
-      {props.isLoading ? null : (
+      {props.isLoading || props.noArticleFound ? null : (
         <SearchResultsSection
           cards={props.cards}
           keyword={props.keyword}
@@ -31,7 +31,9 @@ function Homepage(props) {
         />
       )}
       {props.isLoading ? <ResultsLoadingSection></ResultsLoadingSection> : null}
-      <NothingFoundSection></NothingFoundSection>
+      {props.noArticleFound ? (
+        <NothingFoundSection></NothingFoundSection>
+      ) : null}
       <AboutSection />
     </>
   );
