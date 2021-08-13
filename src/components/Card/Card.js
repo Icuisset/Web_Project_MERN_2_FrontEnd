@@ -28,11 +28,10 @@ function Card(props) {
     }
     console.log(indexAlreadySaved);
   }, [user]);
-  const [isSaved, setIsSaved] = useState(false);
 
-  const handleBookmarkClick = () => {
+  const handleAddClick = () => {
     if (props.isLoggedIn) {
-      if (!isSaved || !isSavedinAPI) {
+      if (!isSavedinAPI) {
         props.onArticleSave(
           props.keyword,
           truncatedTitle,
@@ -42,22 +41,18 @@ function Card(props) {
           props.card.url,
           props.card.urlToImage
         );
-        setIsSaved(true);
         setisSavedinAPI(true);
-      } else {
-        const articleToDelete = props.savedArticles.find(
-          (article) => article.link === props.card.url
-        );
-        console.log(articleToDelete);
-        props.onArticleDelete(articleToDelete._id);
-        setIsSaved(false);
-        setisSavedinAPI(false);
       }
     }
   };
 
   const handleDeleteClick = () => {
-    console.log("Remove from saved has been clicked");
+    const articleToDelete = props.savedArticles.find(
+      (article) => article.link === props.card.url
+    );
+    console.log(articleToDelete);
+    props.onArticleDelete(articleToDelete._id);
+    setisSavedinAPI(false);
   };
 
   return (
@@ -74,11 +69,13 @@ function Card(props) {
               props.isLoggedIn
                 ? "card__button-bookmark_signedin_yes"
                 : "card__button-bookmark_signedin_no"
-            } ${isSavedinAPI || isSaved ? "card__button-bookmark_saved" : null}
+            } ${isSavedinAPI ? "card__button-bookmark_saved" : null}
             `}
             type='button'
             aria-label='card button'
-            onClick={handleBookmarkClick}></button>
+            onClick={
+              isSavedinAPI ? handleDeleteClick : handleAddClick
+            }></button>
           <div className='card__message-signin'>Sign in to save articles</div>
         </>
       ) : (
