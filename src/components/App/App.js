@@ -27,9 +27,7 @@ function App() {
   const [userEmail, setUserEmail] = useState("");
   const [userName, setUserName] = useState("");
 
-  const [articles, setArticles] = useState([]);
   const [savedArticles, setSavedArticles] = useState([]);
-  const [savedlinkIds, setSavedlinkIds] = useState([]);
 
   const [searchKeyword, setSearchKeyword] = useState("");
   const [cards, setCards] = useState([]);
@@ -143,6 +141,7 @@ function App() {
     setCurrentUser({});
     setUserName("");
     setPopupErrorMessage("");
+    setSavedArticles([]);
   };
 
   /**
@@ -173,7 +172,7 @@ function App() {
       api
         .getSavedArticles(token)
         .then((result) => {
-          setArticles(result);
+          setSavedArticles(result);
           console.log(result);
         })
         .catch((err) => {
@@ -196,16 +195,24 @@ function App() {
     image
   ) => {
     console.log(keyword, title, text, date, source, link, image);
-    api
-      .postNewArticle(keyword, title, text, date, source, link, image, token)
-      .then((newArticle) => {
-        console.log(newArticle);
-        console.log(newArticle._id, newArticle.link);
-        setSavedArticles([newArticle, ...savedArticles]);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    const isAlreadySaved = savedArticles.findIndex(
+      (article) => article.link === link
+    );
+    console.log(isAlreadySaved);
+    if (isAlreadySaved <= -1) {
+      api
+        .postNewArticle(keyword, title, text, date, source, link, image, token)
+        .then((newArticle) => {
+          console.log(newArticle);
+          console.log(newArticle._id, newArticle.link);
+          setSavedArticles([newArticle, ...savedArticles]);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      console.log("article is already saved");
+    }
   };
 
   const handleDeleteArticle = (id) => {

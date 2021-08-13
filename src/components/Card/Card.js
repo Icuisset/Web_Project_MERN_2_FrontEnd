@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import UserContext from "../../contexts/CurrentUserContext";
 
 import "./Card.css";
 
@@ -8,8 +9,16 @@ function Card(props) {
     month: "long",
   })} ${date.getDate()}, ${date.getFullYear()}`;
 
+  const user = React.useContext(UserContext);
+
   const truncatedTitle = props.card.title.slice(0, 29);
   const truncatedContent = props.card.title.slice(0, 499);
+
+  const indexAlreadySaved = props.savedArticles.findIndex(
+    (article) => article.link === props.card.url
+  );
+
+  const [isSavedinAPI, setisSavedinAPI] = useState(indexAlreadySaved <= -1);
 
   const [isSaved, setIsSaved] = useState(false);
 
@@ -26,15 +35,16 @@ function Card(props) {
           props.card.urlToImage
         );
         setIsSaved(true);
+        setisSavedinAPI(true);
       } else {
         const articleToDelete = props.savedArticles.find(
           (article) => article.link === props.card.url
         );
+        console.log(articleToDelete);
         props.onArticleDelete(articleToDelete._id);
         setIsSaved(false);
+        setisSavedinAPI(false);
       }
-    } else {
-      console.log("you're not logged in");
     }
   };
 
@@ -56,7 +66,7 @@ function Card(props) {
               props.isLoggedIn
                 ? "card__button-bookmark_signedin_yes"
                 : "card__button-bookmark_signedin_no"
-            } ${isSaved ? "card__button-bookmark_saved" : null}
+            } ${isSaved || isSavedinAPI ? "card__button-bookmark_saved" : null}
             `}
             type='button'
             aria-label='card button'
