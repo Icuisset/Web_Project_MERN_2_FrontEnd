@@ -35,7 +35,10 @@ function Homepage(props) {
           savedArticles={props.savedArticles}
         />
       )}
-      {props.isSearchError ? <SearchErrorSection></SearchErrorSection> : null}
+      {props.isSearchError ? (
+        <SearchErrorSection
+          isNoKeyword={props.isNoKeyword}></SearchErrorSection>
+      ) : null}
       {props.isLoading ? <ResultsLoadingSection></ResultsLoadingSection> : null}
       {props.noArticleFound ? (
         <NothingFoundSection></NothingFoundSection>

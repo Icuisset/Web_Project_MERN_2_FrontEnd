@@ -35,6 +35,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [noArticleFound, setNoArticleFound] = useState(false);
   const [isSearchError, setIsSearchError] = useState(false);
+  const [isNoKeyword, setIsNoKeyword] = useState(false);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [popupErrorMessage, setPopupErrorMessage] = useState("");
@@ -233,6 +234,9 @@ function App() {
    */
 
   const handleArticleSearch = (keyword) => {
+    if (keyword === "") {
+      setIsNoKeyword(true);
+    }
     setIsLoading(true);
     setNoArticleFound(false);
     newsApi
@@ -340,6 +344,7 @@ function App() {
                 userName={userName}
                 isLoading={isLoading}
                 noArticleFound={noArticleFound}
+                isNoKeyword={isNoKeyword}
                 isSearchError={isSearchError}
                 cards={cards.slice(0, numberCardsShown)}
                 keyword={searchKeyword}

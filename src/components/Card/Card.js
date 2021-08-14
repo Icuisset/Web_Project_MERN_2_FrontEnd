@@ -12,7 +12,7 @@ function Card(props) {
   const user = React.useContext(UserContext);
 
   const truncatedTitle = props.card.title.slice(0, 29);
-  const truncatedContent = props.card.title.slice(0, 499);
+  const truncatedContent = props.card.content.slice(0, 499);
 
   const indexAlreadySaved = props.savedArticles.findIndex(
     (article) => article.link === props.card.url
