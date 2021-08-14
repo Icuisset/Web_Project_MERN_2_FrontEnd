@@ -347,6 +347,7 @@ function App() {
                 isNoKeyword={isNoKeyword}
                 isSearchError={isSearchError}
                 cards={cards.slice(0, numberCardsShown)}
+                totalCards={cards}
                 keyword={searchKeyword}
                 savedArticles={savedArticles}
                 onArticleSave={handleAddArticle}

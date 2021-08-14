@@ -26,6 +26,7 @@ function Homepage(props) {
       {props.isLoading || props.noArticleFound || props.isSearchError ? null : (
         <SearchResultsSection
           cards={props.cards}
+          totalCards={props.totalCards}
           keyword={props.keyword}
           isHomePage={isHomePage}
           showMore={props.showMore}

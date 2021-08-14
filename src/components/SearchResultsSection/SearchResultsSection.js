@@ -5,6 +5,8 @@ import Cards from "../Cards/Cards";
 import newsApi from "../../utils/NewsApi";
 
 function SearchResultsSection(props) {
+  const allCardsShown = props.cards.length >= props.totalCards.length;
+
   return (
     <section className='searchResults'>
       <Cards
@@ -16,7 +18,7 @@ function SearchResultsSection(props) {
         onArticleDelete={props.onArticleDelete}
         savedArticles={props.savedArticles}
       />
-      {props.cards.length !== 0 ? (
+      {props.cards.length !== 0 && !allCardsShown ? (
         <button
           className='searchResults__showmoreButton'
           type='button'
