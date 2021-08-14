@@ -101,7 +101,7 @@ function SignupPopup(props) {
             onChange={handleNameChange}
             required
             minLength={2}
-            maxLength={40}
+            maxLength={30}
           />
           {errorUsername ? (
             <span id='userName-error' className='popup__input-error'>

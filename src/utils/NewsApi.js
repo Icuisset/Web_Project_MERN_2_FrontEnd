@@ -16,11 +16,12 @@ class NewsApi {
   }
 
   _getLastWeekDate() {
+    /* just double checking today's result*/
     const today = new Date().toISOString().slice(0, 10);
     console.log(today);  
-    const lastdate = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
-    console.log(lastdate);
-    return lastdate;
+    const lastWeekDate = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+    console.log(lastWeekDate);
+    return lastWeekDate;
   }
 
 
