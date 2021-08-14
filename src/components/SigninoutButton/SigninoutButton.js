@@ -1,8 +1,11 @@
 import React from "react";
+import UserContext from "../../contexts/CurrentUserContext";
 
 import "./SigninoutButton.css";
 
 function SigninoutButton(props) {
+  const user = React.useContext(UserContext);
+
   return (
     <>
       {props.isLoggedIn ? (
@@ -10,7 +13,7 @@ function SigninoutButton(props) {
           className={`signout signout_textcolor_${props.textColor} ${props.isMobileMenu && "button_type_mobile"}`}
           type='button'
           onClick={props.signoutClick}>
-          {props.userName}
+          {user.name}
           {props.textColor === "dark" ? (
             <svg
               className='signout__logo'

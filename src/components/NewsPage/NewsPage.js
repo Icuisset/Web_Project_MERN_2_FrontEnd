@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import UserContext from "../../contexts/CurrentUserContext";
 
 import "./NewsPage.css";
 
@@ -6,11 +7,12 @@ import HeaderNavBar from "../HeaderNavBar/HeaderNavBar";
 import SearchResultsSection from "../SearchResultsSection/SearchResultsSection";
 
 function Newspage(props) {
+  const user = React.useContext(UserContext);
 
   const [newsTextColor, setNewsTextColor] = useState("dark");
   const [isHomePage, setisHomePage] = useState(false);
 
-  const newsTitle = props.userName + ", you have 5 saved articles";
+  const newsTitle = user.name + ", you have 5 saved articles";
 
   return (
     <>
@@ -21,8 +23,7 @@ function Newspage(props) {
           signinClick={props.signinClick}
           signoutClick={props.signoutClick}
           mobileMenuClick={props.mobileMenuClick}
-          isNewsPage={true}
-          userName={props.userName}></HeaderNavBar>
+          isNewsPage={true}></HeaderNavBar>
       </div>
       <section className='newspage__top-section'>
         <p className='newspage__subtitle'>Saved articles</p>
@@ -34,7 +35,13 @@ function Newspage(props) {
           </span>
         </p>
       </section>
-      <SearchResultsSection cards={props.cards} isHomePage={isHomePage} />
+      <SearchResultsSection
+        cards={props.cards}
+        totalCards={props.totalCards}
+        keyword={props.keyword}
+        savedArticles={props.savedArticles}
+        isHomePage={isHomePage}
+      />
     </>
   );
 }

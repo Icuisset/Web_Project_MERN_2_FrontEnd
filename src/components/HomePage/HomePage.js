@@ -20,7 +20,6 @@ function Homepage(props) {
         signoutClick={props.signoutClick}
         mobileMenuClick={props.mobileMenuClick}
         isHomePage={isHomePage}
-        userName={props.userName}
         onSearch={props.onSearch}
       />
       {props.isLoading || props.noArticleFound || props.isSearchError ? null : (

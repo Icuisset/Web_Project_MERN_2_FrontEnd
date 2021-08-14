@@ -86,7 +86,7 @@ function SigninPopup(props) {
             name='emailInput'
             placeholder='Enter email'
             type='email'
-            value={email}
+            value={email || ""}
             onChange={handleEmailChange}
             required
           />

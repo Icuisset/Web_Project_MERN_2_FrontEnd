@@ -10,7 +10,6 @@ function HeaderSection(props) {
     <div className='heading-zone'>
       <HeaderNavBar
         isLoggedIn={props.isLoggedIn}
-        userName={props.userName}
         textColor={props.textColor}
         signinClick={props.signinClick}
         signoutClick={props.signoutClick}

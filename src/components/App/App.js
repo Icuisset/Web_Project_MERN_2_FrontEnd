@@ -318,6 +318,7 @@ function App() {
     setIsSignupPopupOpen(false);
     setIsSuccessPopupOpen(false);
     setIsMobileMenuOpen(false);
+    SetIsNotAvailableEmail(false);
     console.log("popup closed");
   };
 
@@ -329,8 +330,10 @@ function App() {
             path='/saved-news'
             component={NewsPage}
             isLoggedIn={isLoggedIn}
-            userName={userName}
-            cards={initialCards}
+            cards={cards.slice(0, numberCardsShown)}
+            totalCards={cards}
+            keyword={searchKeyword}
+            savedArticles={savedArticles}
             signinClick={() => handleHeaderSigninClick()}
             signoutClick={() => handleHeaderSignoutClick()}
             mobileMenuClick={() => handleNewsMobileMenuClick()}
@@ -340,7 +343,6 @@ function App() {
             <>
               <HomePage
                 isLoggedIn={isLoggedIn}
-                userName={userName}
                 isLoading={isLoading}
                 noArticleFound={noArticleFound}
                 isNoKeyword={isNoKeyword}

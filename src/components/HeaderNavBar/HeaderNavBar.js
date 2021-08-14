@@ -42,7 +42,7 @@ function HeaderNavBar(props) {
               textColor={props.textColor}
               signinClick={props.signinClick}
               signoutClick={props.signoutClick}
-              userName={props.userName}></SigninoutButton>
+              ></SigninoutButton>
           </div>
         </div>
       </header>
