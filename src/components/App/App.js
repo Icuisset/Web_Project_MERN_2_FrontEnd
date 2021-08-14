@@ -38,7 +38,7 @@ function App() {
   const [isNoKeyword, setIsNoKeyword] = useState(false);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [popupErrorMessage, setPopupErrorMessage] = useState("");
+  const [isNotAvailableEmail, SetIsNotAvailableEmail] = useState(false);
 
   const [token, setToken] = useState(localStorage.getItem("token"));
 
@@ -55,7 +55,6 @@ function App() {
         console.log(result);
         if (result.err) {
           console.log(result.err);
-          setPopupErrorMessage(result.err);
         } else {
           setIsSignupPopupOpen(false);
           setIsSuccessPopupOpen(true);
@@ -63,7 +62,9 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-        setPopupErrorMessage(err);
+        if (err === "Error: 409") {
+          SetIsNotAvailableEmail(true);
+        }
       });
   };
 
@@ -78,7 +79,6 @@ function App() {
         console.log(result);
         if (result.statusCode === 401) {
           console.log(result);
-          setPopupErrorMessage(result.err);
         }
         const JWT = localStorage.getItem("jwt");
         if (JWT) {
@@ -91,7 +91,6 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-        setPopupErrorMessage(err);
       });
   };
 
@@ -111,7 +110,6 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-        setPopupErrorMessage(err);
       });
   };
 
@@ -142,7 +140,7 @@ function App() {
     setIsLoggedIn(false);
     setCurrentUser({});
     setUserName("");
-    setPopupErrorMessage("");
+    SetIsNotAvailableEmail(false);
     setSavedArticles([]);
   };
 
@@ -376,6 +374,7 @@ function App() {
         onClose={closeAllPopups}
         signinClick={() => handlePopupSigninClick()}
         onSignup={handleSignUp}
+        isNotAvailableEmail={isNotAvailableEmail}
       />
 
       <SuccessPopup

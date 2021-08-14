@@ -8,8 +8,6 @@ function SignupPopup(props) {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
 
-  const [errorEmailNotAvailable, setEmailNotAvailable] = React.useState(true);
-
   const [inputsAreValid, setInputsAreValid] = React.useState(false);
 
   const [emailErrorMessage, setEmailErrorMessage] = React.useState("");
@@ -154,7 +152,7 @@ function SignupPopup(props) {
             </span>
           ) : null}
         </div>
-        {errorEmailNotAvailable ? (
+        {props.isNotAvailableEmail ? (
           <span id='emailnotavailable-error' className='popup__email-error'>
             This email is not available
           </span>
