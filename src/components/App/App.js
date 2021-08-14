@@ -57,6 +57,7 @@ function App() {
           console.log(result.err);
           setPopupErrorMessage(result.err);
         } else {
+          setIsSignupPopupOpen(false);
           setIsSuccessPopupOpen(true);
         }
       })

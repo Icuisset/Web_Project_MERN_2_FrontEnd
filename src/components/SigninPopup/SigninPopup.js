@@ -1,9 +1,12 @@
 import React, { useState, useCallback } from "react";
+import UserContext from "../../contexts/CurrentUserContext";
 
 import "./SigninPopup.css";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 
 function SigninPopup(props) {
+  const user = React.useContext(UserContext);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   /* below states are only to test CSS for now */
@@ -38,8 +41,8 @@ function SigninPopup(props) {
   const resetForm = useCallback(
     (
       emailValue = "",
-      passwordValue = "",
       emailMessage = "",
+      passwordValue = "",
       passwordMessage = "",
       inputsValid = false
     ) => {
@@ -57,6 +60,13 @@ function SigninPopup(props) {
       setInputsAreValid,
     ]
   );
+
+  React.useEffect(() => {
+    setEmail(user.email);
+    setEmailErrorMessage("");
+    setPassword("");
+    setPasswordErrorMessage("");
+  }, [user, props.isOpen]);
 
   return (
     <PopupWithForm

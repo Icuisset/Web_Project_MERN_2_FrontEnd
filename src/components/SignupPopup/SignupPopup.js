@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 
 import "./SignupPopup.css";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
@@ -7,23 +7,31 @@ function SignupPopup(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  /* below states are only to test CSS for now */
-  const [inputsAreValid, setInputsAreValid] = React.useState(true);
-  const [errorEmail, setErrorEmail] = React.useState(true);
-  const [errorPassword, setErrorPassword] = React.useState(false);
-  const [errorUsername, setErrorUsername] = React.useState(false);
+
   const [errorEmailNotAvailable, setEmailNotAvailable] = React.useState(true);
+
+  const [inputsAreValid, setInputsAreValid] = React.useState(false);
+
+  const [emailErrorMessage, setEmailErrorMessage] = React.useState("");
+  const [passwordErrorMessage, setPasswordErrorMessage] = React.useState("");
+  const [usernameErrorMessage, setUsernameErrorMessage] = React.useState("");
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
+    setEmailErrorMessage(event.target.validationMessage);
+    setInputsAreValid(event.target.closest("form").checkValidity());
   };
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
+    setPasswordErrorMessage(event.target.validationMessage);
+    setInputsAreValid(event.target.closest("form").checkValidity());
   };
 
-  const handleNameChange = (event) => {
+  const handleUsernameChange = (event) => {
     setName(event.target.value);
+    setUsernameErrorMessage(event.target.validationMessage);
+    setInputsAreValid(event.target.closest("form").checkValidity());
   };
 
   const handleSubmit = (event) => {
@@ -34,7 +42,44 @@ function SignupPopup(props) {
       email,
       password,
     });
+    resetForm();
   };
+
+  const resetForm = useCallback(
+    (
+      emailValue = "",
+      emailMessage = "",
+      passwordValue = "",
+      passwordMessage = "",
+      usernameValue = "",
+      usernameMessage = "",
+      inputsValid = false
+    ) => {
+      setEmail(emailValue);
+      setEmailErrorMessage(emailMessage);
+      setPassword(passwordValue);
+      setPasswordErrorMessage(passwordMessage);
+      setName(usernameValue);
+      setUsernameErrorMessage(usernameMessage);
+      setInputsAreValid(inputsValid);
+    },
+    [
+      setEmail,
+      setEmailErrorMessage,
+      setPassword,
+      setPasswordErrorMessage,
+      setInputsAreValid,
+    ]
+  );
+
+  React.useEffect(() => {
+    setEmail("");
+    setEmailErrorMessage("");
+    setPassword("");
+    setPasswordErrorMessage("");
+    setName("");
+    setUsernameErrorMessage("");
+  }, [props.isOpen]);
 
   return (
     <PopupWithForm
@@ -59,7 +104,7 @@ function SignupPopup(props) {
             onChange={handleEmailChange}
             required
           />
-          {errorEmail ? (
+          {emailErrorMessage ? (
             <span id='profileEmail-error' className='popup__input-error'>
               Invalid email adress
             </span>
@@ -81,7 +126,7 @@ function SignupPopup(props) {
             minLength={2}
             maxLength={40}
           />
-          {errorPassword ? (
+          {passwordErrorMessage ? (
             <span id='profilePassword-error' className='popup__input-error'>
               Invalid Password
             </span>
@@ -98,12 +143,12 @@ function SignupPopup(props) {
             placeholder='Enter your username'
             type='text'
             value={name}
-            onChange={handleNameChange}
+            onChange={handleUsernameChange}
             required
             minLength={2}
             maxLength={30}
           />
-          {errorUsername ? (
+          {usernameErrorMessage ? (
             <span id='userName-error' className='popup__input-error'>
               Invalid Username
             </span>
