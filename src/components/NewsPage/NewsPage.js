@@ -86,6 +86,7 @@ function Newspage(props) {
         keyword={props.keyword}
         savedArticles={props.savedArticles}
         isHomePage={isHomePage}
+        onArticleDelete={props.onArticleDelete}
       />
     </>
   );

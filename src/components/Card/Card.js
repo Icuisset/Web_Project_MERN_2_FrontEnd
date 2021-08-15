@@ -29,7 +29,7 @@ function Card(props) {
     console.log(indexAlreadySaved);
   }, [user]);
 
-  const handleAddClick = () => {
+  const handleAddBookmarkClick = () => {
     if (props.isLoggedIn) {
       if (!isSavedinAPI) {
         props.onArticleSave(
@@ -46,13 +46,17 @@ function Card(props) {
     }
   };
 
-  const handleDeleteClick = () => {
+  const handleDeleteBookmarkClick = () => {
     const articleToDelete = props.savedArticles.find(
-      (article) => article.link === props.card.url
+      (article) => article.url === props.card.url
     );
     console.log(articleToDelete);
     props.onArticleDelete(articleToDelete._id);
     setisSavedinAPI(false);
+  };
+
+  const handleDeleteBinClick = () => {
+    props.onArticleDelete(props.card._id);
   };
 
   return (
@@ -74,7 +78,7 @@ function Card(props) {
             type='button'
             aria-label='card button'
             onClick={
-              isSavedinAPI ? handleDeleteClick : handleAddClick
+              isSavedinAPI ? handleDeleteBookmarkClick : handleAddBookmarkClick
             }></button>
           <div className='card__message-signin'>Sign in to save articles</div>
         </>
@@ -84,13 +88,11 @@ function Card(props) {
             className='card__button card__button-delete'
             type='button'
             aria-label='card button'
-            onClick={handleDeleteClick}></button>
+            onClick={handleDeleteBinClick}></button>
           <div className='card__message-delete'>Remove from saved</div>
-          {props.keyword ? (
-            <div className='card__keyword'>
-              <p className='card__keyword-text'>{props.keyword}</p>
-            </div>
-          ) : null}
+          <div className='card__keyword'>
+            <p className='card__keyword-text'>{props.card.keyword}</p>
+          </div>
         </>
       )}
       <div className='card__text-zone'>

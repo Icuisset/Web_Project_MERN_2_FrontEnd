@@ -209,7 +209,7 @@ function App() {
   ) => {
     console.log(keyword, title, text, date, source, link, image);
     const isAlreadySaved = savedArticles.findIndex(
-      (article) => article.link === link
+      (article) => article.url === link
     );
     console.log(isAlreadySaved);
     if (isAlreadySaved <= -1) {
@@ -218,7 +218,18 @@ function App() {
         .then((newArticle) => {
           console.log(newArticle);
           console.log(newArticle._id, newArticle.link);
-          setSavedArticles([newArticle, ...savedArticles]);
+          const newFormatArticle = {
+            publishedAt: newArticle.date,
+            urlToImage: newArticle.image,
+            keyword: newArticle.keyword,
+            url: newArticle.link,
+            owner: newArticle.owner,
+            source: { name: newArticle.source },
+            content: newArticle.text,
+            title: newArticle.title,
+            _id: newArticle._id,
+          };
+          setSavedArticles([newFormatArticle, ...savedArticles]);
         })
         .catch((err) => {
           console.log(err);
@@ -347,6 +358,7 @@ function App() {
             totalCards={cards}
             keyword={searchKeyword}
             savedArticles={savedArticles}
+            onArticleDelete={handleDeleteArticle}
             signinClick={() => handleHeaderSigninClick()}
             signoutClick={() => handleHeaderSignoutClick()}
             mobileMenuClick={() => handleNewsMobileMenuClick()}
