@@ -120,6 +120,11 @@ function SigninPopup(props) {
             </span>
           ) : null}
         </div>
+        {props.isWrongCredentials ? (
+          <span id='credentials-error' className='popup__credentials-error'>
+            Please enter correct email address and password.
+          </span>
+        ) : null}
       </div>
       <button
         type='submit'

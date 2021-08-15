@@ -64,7 +64,7 @@
     padding-left: 2px;
 }
 
-.popup__email-error {
+.popup__credentials-error {
     color: red;
     width: 100%;
     text-align: center;
