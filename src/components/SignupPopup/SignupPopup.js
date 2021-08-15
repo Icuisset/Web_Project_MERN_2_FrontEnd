@@ -103,7 +103,7 @@ function SignupPopup(props) {
             required
           />
           {emailErrorMessage ? (
-            <span id='profileEmail-error' className='popup__input-error_emailsignup'>
+            <span id='profileEmail-error' className='popup__input-error'>
               {emailErrorMessage}
             </span>
           ) : null}
@@ -125,7 +125,7 @@ function SignupPopup(props) {
             maxLength={40}
           />
           {passwordErrorMessage ? (
-            <span id='profilePassword-error' className='popup__input-error_passwordsignup'>
+            <span id='profilePassword-error' className='popup__input-error_doubleline'>
               {passwordErrorMessage}
             </span>
           ) : null}
@@ -147,7 +147,7 @@ function SignupPopup(props) {
             maxLength={30}
           />
           {usernameErrorMessage ? (
-            <span id='userName-error' className='popup__input-error_usernamesignup'>
+            <span id='userName-error' className='popup__input-error_doubleline'>
               {usernameErrorMessage}
             </span>
           ) : null}

@@ -39,7 +39,7 @@
     border-bottom: 1px solid black;
 }
 
-.popup__input-error_emailsignup {
+.popup__input-error {
     color: red;
     font-size: 12px;
     line-height: 15px;
@@ -48,16 +48,13 @@
     padding-left: 2px;
 }
 
-.popup__input-error_passwordsignup {
-  color: red;
-  font-size: 12px;
-  line-height: 15px;
-  position: absolute;
-  bottom: 0;
-  padding-left: 2px;
+@media screen and (max-width: 400px) {
+  .popup__input-error {
+    bottom: 0;
+  }
 }
 
-.popup__input-error_usernamesignup {
+.popup__input-error_doubleline {
   color: red;
   font-size: 12px;
   line-height: 15px;

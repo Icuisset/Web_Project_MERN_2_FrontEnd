@@ -49,6 +49,12 @@
     padding-left: 2px;
 }
 
+@media screen and (max-width: 400px) {
+    .popup__input-error_email {
+      bottom: 0;
+    }
+  }
+
 .popup__input-error_password {
     color: red;
     font-size: 12px;
