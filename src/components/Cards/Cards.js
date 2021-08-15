@@ -10,7 +10,7 @@ function Cards(props) {
             {props.isHomePage ? <h2 className="cards__title">Search results</h2> : null }
             {props.cards.map((card, index) => (
               <Card
-                keyword={props.keyword}
+                keyword={props.isHomePage? props.keyword: card.keyword}
                 key={index}
                 card={card}
                 onArticleSave={props.onArticleSave}

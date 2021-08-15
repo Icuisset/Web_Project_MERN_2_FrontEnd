@@ -18,7 +18,7 @@ function SearchResultsSection(props) {
         onArticleDelete={props.onArticleDelete}
         savedArticles={props.savedArticles}
       />
-      {props.cards.length !== 0 && !allCardsShown ? (
+      {props.cards.length !== 0 && !allCardsShown && props.isHomePage ? (
         <button
           className='searchResults__showmoreButton'
           type='button'

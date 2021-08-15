@@ -172,8 +172,21 @@ function App() {
       api
         .getSavedArticles(token)
         .then((result) => {
-          setSavedArticles(result);
           console.log(result);
+          const cardFormatResult = result.map((article) => {
+            return {
+              publishedAt: article.date,
+              urlToImage: article.image,
+              keyword: article.keyword,
+              url: article.link,
+              owner: article.owner,
+              source: { name: article.source },
+              content: article.text,
+              title: article.title,
+              _id: article._id,
+            };
+          });
+          setSavedArticles(cardFormatResult);
         })
         .catch((err) => {
           console.log(err);
@@ -330,7 +343,7 @@ function App() {
             path='/saved-news'
             component={NewsPage}
             isLoggedIn={isLoggedIn}
-            cards={cards.slice(0, numberCardsShown)}
+            cards={savedArticles}
             totalCards={cards}
             keyword={searchKeyword}
             savedArticles={savedArticles}
