@@ -12,6 +12,22 @@ function Newspage(props) {
   const [newsTextColor, setNewsTextColor] = useState("dark");
   const [isHomePage, setisHomePage] = useState(false);
 
+  const initialKeywordsList = props.savedArticles.map(
+    (article) => article.keyword
+  );
+  const keywordsMap = initialKeywordsList.reduce(
+    (acc, curr) => ((acc[curr] = (acc[curr] || 0) + 1), acc),
+    {}
+  );
+
+  const sortedKeywordsMap = Object.fromEntries(
+    Object.entries(keywordsMap).sort(([, a], [, b]) => b - a)
+  );
+
+  const keywordCount = Object.keys(keywordsMap).length;
+
+  const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+
   return (
     <>
       <div className='newspage__header-zone'>
@@ -28,12 +44,41 @@ function Newspage(props) {
         <h1 className='newspage__title'>
           {`${user.name}, you have ${props.savedArticles.length} saved articles`}
         </h1>
-        <p className='newspage__keywords'>
-          By keywords:
-          <span>
-            <b> Nature, Yellowstone, and 2 others.</b>
-          </span>
-        </p>
+        {keywordCount >= 0 ? (
+          <p className='newspage__keywords'>
+            By keywords:
+            <span>
+              {keywordCount >= 4 ? (
+                <b>
+                  {` ${capitalize(
+                    Object.keys(sortedKeywordsMap)[0]
+                  )}, ${capitalize(Object.keys(sortedKeywordsMap)[1])}, and ${
+                    keywordCount - 2
+                  } others.`}
+                </b>
+              ) : null}
+              {keywordCount === 3 ? (
+                <b>
+                  {` ${capitalize(
+                    Object.keys(sortedKeywordsMap)[0]
+                  )}, ${capitalize(
+                    Object.keys(sortedKeywordsMap)[1]
+                  )}, and ${capitalize(Object.keys(sortedKeywordsMap)[2])}.`}
+                </b>
+              ) : null}
+              {keywordCount === 2 ? (
+                <b>
+                  {` ${capitalize(
+                    Object.keys(sortedKeywordsMap)[0]
+                  )} and ${capitalize(Object.keys(sortedKeywordsMap)[1])}.`}
+                </b>
+              ) : null}
+              {keywordCount === 1 ? (
+                <b>{` ${capitalize(Object.keys(sortedKeywordsMap)[0])}.`}</b>
+              ) : null}
+            </span>
+          </p>
+        ) : null}
       </section>
       <SearchResultsSection
         cards={props.cards}

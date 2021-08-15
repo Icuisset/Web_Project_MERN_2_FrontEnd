@@ -26,7 +26,7 @@ class NewsApi {
 
 
   //GET https://newsapi.org/v2/everything
-  getNewsResults(request, numberCards = 100, from = "2021-08-14", sortBy = "popularity") {
+  getNewsResults(request, numberCards = 100, from = "2021-08-14", sortBy = "relevancy") {
     return fetch(this._baseUrl + '?q=' + request + '&apiKey=' + this._apiKey + '&pageSize=' + numberCards + '&from=' + this._getLastWeekDate() + '&sortBy=' + sortBy, {
       method: 'GET',
       redirect: 'follow'
