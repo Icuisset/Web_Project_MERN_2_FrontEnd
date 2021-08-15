@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import UserContext from "../../contexts/CurrentUserContext";
 
@@ -16,6 +17,7 @@ function Newspage(props) {
     (article) => article.keyword
   );
   const keywordsMap = initialKeywordsList.reduce(
+    // eslint-disable-next-line no-sequences
     (acc, curr) => ((acc[curr] = (acc[curr] || 0) + 1), acc),
     {}
   );

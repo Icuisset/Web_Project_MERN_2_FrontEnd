@@ -91,8 +91,8 @@ function SigninPopup(props) {
             required
           />
           {emailErrorMessage ? (
-            <span id='profileEmail-error' className='popup__input-error'>
-              Invalid email adress
+            <span id='profileEmail-error' className='popup__input-error_email'>
+              {emailErrorMessage}
             </span>
           ) : null}
         </div>
@@ -113,8 +113,10 @@ function SigninPopup(props) {
             maxLength={40}
           />
           {passwordErrorMessage ? (
-            <span id='profilePassword-error' className='popup__input-error'>
-              Invalid Password
+            <span
+              id='profilePassword-error'
+              className='popup__input-error_password'>
+              {passwordErrorMessage}
             </span>
           ) : null}
         </div>

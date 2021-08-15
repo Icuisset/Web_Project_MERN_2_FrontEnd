@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import "./SearchResultsSection.css";
 import Cards from "../Cards/Cards";
-import newsApi from "../../utils/NewsApi";
 
 function SearchResultsSection(props) {
   const allCardsShown = props.cards.length >= props.totalCards.length;

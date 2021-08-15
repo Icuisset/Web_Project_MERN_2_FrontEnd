@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import UserContext from "../../contexts/CurrentUserContext";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-import { Switch, Route, useHistory } from "react-router-dom";
+import { Switch, Route, useHistory, useLocation } from "react-router-dom";
 
 import HomePage from "../HomePage/HomePage";
 import NewsPage from "../NewsPage/NewsPage";
@@ -10,13 +10,12 @@ import SigninPopup from "../SigninPopup/SigninPopup";
 import SignupPopup from "../SignupPopup/SignupPopup";
 import SuccessPopup from "../SuccessPopup/SuccessPopup";
 import MobileMenu from "../MobileMenu/MobileMenu";
-import initialCards from "../../utils/initialCards";
 import authorize from "../../utils/authorize";
 import api from "../../utils/MainApi";
 import newsApi from "../../utils/NewsApi";
-import ResultsLoadingSection from "../ResultsLoadingSection/ResultsLoadingSection";
 
 function App() {
+  const location = useLocation();
   const [isSigninPopupOpen, setIsSigninPopupOpen] = useState(false);
   const [isSignupPopupOpen, setIsSignupPopupOpen] = useState(false);
   const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
@@ -24,8 +23,6 @@ function App() {
   const [textColor, setTextColor] = useState("light");
 
   const [currentUser, setCurrentUser] = useState({});
-  const [userEmail, setUserEmail] = useState("");
-  const [userName, setUserName] = useState("");
 
   const [savedArticles, setSavedArticles] = useState([]);
 
@@ -42,6 +39,7 @@ function App() {
 
   const [token, setToken] = useState(localStorage.getItem("token"));
 
+  // eslint-disable-next-line no-unused-vars
   const history = useHistory();
 
   /**
@@ -103,8 +101,6 @@ function App() {
       .checkTokenIsValid(JWT)
       .then((result) => {
         console.log(result.name, result);
-        const thisUserName = result.name;
-        setUserName(thisUserName);
         setCurrentUser(result);
         setIsLoggedIn(true);
       })
@@ -139,7 +135,6 @@ function App() {
     localStorage.removeItem("jwt");
     setIsLoggedIn(false);
     setCurrentUser({});
-    setUserName("");
     SetIsNotAvailableEmail(false);
     setSavedArticles([]);
   };
@@ -155,7 +150,6 @@ function App() {
         .then((result) => {
           console.log(result);
           setCurrentUser(result);
-          setUserName(result.name);
         })
         .catch((err) => {
           console.log(err);
@@ -345,6 +339,16 @@ function App() {
     SetIsNotAvailableEmail(false);
     console.log("popup closed");
   };
+
+  /**
+   * handle opening of signin popup on protected route when not logged in
+   */
+  useEffect(() => {
+    if (!isLoggedIn && location.signin) {
+      setIsSigninPopupOpen(true);
+    }
+    location.signin = false;
+  }, [location, isLoggedIn]);
 
   return (
     <UserContext.Provider value={currentUser}>

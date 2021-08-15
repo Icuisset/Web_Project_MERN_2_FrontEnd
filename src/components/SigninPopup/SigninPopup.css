@@ -40,12 +40,21 @@
     border-bottom: 1px solid black;
 }
 
-.popup__input-error {
+.popup__input-error_email {
     color: red;
     font-size: 12px;
     line-height: 15px;
     position: absolute;
     bottom: 13px;
+    padding-left: 2px;
+}
+
+.popup__input-error_password {
+    color: red;
+    font-size: 12px;
+    line-height: 15px;
+    position: absolute;
+    bottom: 0;
     padding-left: 2px;
 }
 
