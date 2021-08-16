@@ -398,10 +398,10 @@ function App() {
                 onArticleDelete={handleDeleteArticle}
                 onSearch={handleArticleSearch}
                 showMore={handleShowMoreButtonClick}
-                signinClick={() => handleHeaderSigninClick()}
-                signoutClick={() => handleHeaderSignoutClick()}
-                mobileMenuClick={() => handleHomeMobileMenuClick()}
-                openLoginPopup={() => handlePopupSigninClick()}></HomePage>
+                signinClick={handleHeaderSigninClick}
+                signoutClick={handleHeaderSignoutClick}
+                mobileMenuClick={handleHomeMobileMenuClick}
+                openLoginPopup={handlePopupSigninClick}></HomePage>
             </>
           </Route>
         </Switch>
@@ -411,7 +411,7 @@ function App() {
       <SigninPopup
         isOpen={isSigninPopupOpen}
         onClose={closeAllPopups}
-        signupClick={() => handlePopupSignupClick()}
+        signupClick={handlePopupSignupClick}
         onSignin={handleSignIn}
         isWrongCredentials={isWrongCredentials}
       />
@@ -419,7 +419,7 @@ function App() {
       <SignupPopup
         isOpen={isSignupPopupOpen}
         onClose={closeAllPopups}
-        signinClick={() => handlePopupSigninClick()}
+        signinClick={handlePopupSigninClick}
         onSignup={handleSignUp}
         isNotAvailableEmail={isNotAvailableEmail}
       />
@@ -428,7 +428,7 @@ function App() {
         isOpen={isSuccessPopupOpen}
         onClose={closeAllPopups}
         popupName='success'
-        signinClick={() => handleSuccessSigninClick()}
+        signinClick={handleSuccessSigninClick}
       />
       <MobileMenu
         isLoggedIn={isLoggedIn}
@@ -436,8 +436,8 @@ function App() {
         onClose={closeAllPopups}
         popupName='mobile'
         hasTextColor={textColor}
-        signinClick={() => handleHeaderSigninClick()}
-        signoutClick={() => handleHeaderSignoutClick()}
+        signinClick={handleHeaderSigninClick}
+        signoutClick={handleHeaderSignoutClick}
       />
     </UserContext.Provider>
   );
