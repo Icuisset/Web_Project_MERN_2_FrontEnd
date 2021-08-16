@@ -10,7 +10,9 @@
 .card__image {
     width: 100%;
     height: 272px;
+    object-fit: cover; 
 }
+
 
 @media screen and (max-width: 900px) {
     .card__image {
@@ -23,6 +25,8 @@
         height: 196px;
     }
 }
+
+
 
 .card__button {
     width: 40px;
@@ -48,16 +52,33 @@
     }
 }
 
-.card__button-bookmark {
+.card__button-bookmark_signedin_no {
     background: url(../../images/bookmark-inactive.svg) 50% 50% no-repeat;
     background-color: white;
     transition: background-image 300ms;
 }
 
-.card__button-bookmark:hover {
+.card__button-bookmark_signedin_no:hover {
     background: url(../../images/bookmark-active.svg) 50% 50% no-repeat;
     background-color: white;
     cursor: pointer;
+}
+
+.card__button-bookmark_signedin_yes {
+    background: url(../../images/bookmark-inactive.svg) 50% 50% no-repeat;
+    background-color: white;
+    transition: background-image 300ms;
+}
+
+.card__button-bookmark_signedin_yes:hover {
+    background: url(../../images/bookmark-pressed.svg) 50% 50% no-repeat;
+    background-color: white;
+    cursor: pointer;
+}
+
+.card__button-bookmark_saved {
+    background: url(../../images/bookmark-pressed.svg) 50% 50% no-repeat;
+    background-color: white;
 }
 
 .card__button-bookmark_active {
@@ -107,7 +128,7 @@
     }
 }
 
-.card__button-bookmark:hover + .card__message-signin {
+.card__button-bookmark_signedin_no:hover + .card__message-signin {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -360,4 +381,10 @@
         -webkit-line-clamp: 1;
         /* number of lines to show */
     }
+}
+
+.card__link_article {
+    text-decoration: none;
+    margin: 0;
+    color: #1A1B22;
 }

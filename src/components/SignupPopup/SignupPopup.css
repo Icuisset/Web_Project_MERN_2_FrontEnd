@@ -48,6 +48,33 @@
     padding-left: 2px;
 }
 
+@media screen and (max-width: 400px) {
+  .popup__input-error {
+    bottom: 0;
+  }
+}
+
+.popup__input-error_doubleline {
+  color: red;
+  font-size: 12px;
+  line-height: 15px;
+  position: absolute;
+  bottom: 0;
+  padding-left: 2px;
+}
+
+.popup__email-error {
+  color: red;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  line-height: 15px;
+  position: absolute;
+  bottom: 0px;
+  padding-left: 2px;
+}
+
+
 .popup__button {
     background-color: #2F71E5;
     color: white;

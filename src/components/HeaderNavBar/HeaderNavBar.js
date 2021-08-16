@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 import "./HeaderNavBar.css";
@@ -21,13 +21,16 @@ function HeaderNavBar(props) {
             to={"/"}>
             Home
           </Link>
-          <Link
-            className={`header__link header__link_textcolor_${
-              props.textColor
-            } ${props.isNewsPage && "header__link_focused_news"}`}
-            to={"/saved-news"}>
-            Saved articles
-          </Link>
+          {props.isLoggedIn ? (
+            <Link
+              className={`header__link header__link_textcolor_${
+                props.textColor
+              } ${props.isNewsPage && "header__link_focused_news"}`}
+              to={"/saved-news"}>
+              Saved articles
+            </Link>
+          ) : null}
+
           <button
             type='button'
             onClick={props.mobileMenuClick}
@@ -38,7 +41,8 @@ function HeaderNavBar(props) {
               isLoggedIn={props.isLoggedIn}
               textColor={props.textColor}
               signinClick={props.signinClick}
-              signoutClick={props.signoutClick}></SigninoutButton>
+              signoutClick={props.signoutClick}
+              ></SigninoutButton>
           </div>
         </div>
       </header>

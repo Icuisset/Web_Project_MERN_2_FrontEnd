@@ -7,14 +7,18 @@ function Cards(props) {
 
   return (
         <ul className='cards'>
-            {props.hasSectionTitle ? <h2 className="cards__title">Search results</h2> : null }
-            {props.cards.map((card) => (
+            {props.isHomePage ? <h2 className="cards__title">Search results</h2> : null }
+            {props.cards.map((card, index) => (
               <Card
-                key={card._id}
+                keyword={props.isHomePage? props.keyword: card.keyword}
+                key={index}
                 card={card}
-                onCardSave={props.onCardSave}
-                onCardDelete={props.onCardDelete}
+                onArticleSave={props.onArticleSave}
+                onArticleDelete={props.onArticleDelete}
+                savedArticles={props.savedArticles}
                 isHomePage={props.isHomePage}
+                isLoggedIn={props.isLoggedIn}
+                openLoginPopup={props.openLoginPopup}
               />
             ))}
           </ul>

@@ -21,7 +21,7 @@ function HeaderSection(props) {
           Find the latest news on any topic and save them in your personal
           account.
         </p>
-        <SearchBox></SearchBox>
+        <SearchBox onSearch={props.onSearch}></SearchBox>
       </div>
     </div>
   );
