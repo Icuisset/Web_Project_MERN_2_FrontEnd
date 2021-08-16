@@ -11,16 +11,17 @@ function Card(props) {
 
   const user = React.useContext(UserContext);
 
+  const url = window.location.pathname.split("/").pop();
+
   const truncatedTitle = props.card.title.slice(0, 29);
   const truncatedContent = props.card.content.slice(0, 499);
 
-  const indexAlreadySaved = props.savedArticles.findIndex(
-    (article) => article.link === props.card.url
-  );
-
-  const [isSavedinAPI, setisSavedinAPI] = useState(indexAlreadySaved <= -1);
+  const [isSavedinAPI, setisSavedinAPI] = useState(false);
 
   useEffect(() => {
+    const indexAlreadySaved = props.savedArticles.findIndex(
+      (article) => article.url === props.card.url
+    );
     if (indexAlreadySaved <= -1) {
       setisSavedinAPI(false);
     } else {
@@ -28,7 +29,7 @@ function Card(props) {
     }
     console.log(indexAlreadySaved);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]);
+  }, [user, props.isLoggedIn, url]);
 
   const handleAddBookmarkClick = () => {
     if (props.isLoggedIn) {
@@ -44,6 +45,8 @@ function Card(props) {
         );
         setisSavedinAPI(true);
       }
+    } else {
+      props.openLoginPopup();
     }
   };
 
@@ -99,8 +102,14 @@ function Card(props) {
       <div className='card__text-zone'>
         <div>
           <p className='card__date'>{formattedDate}</p>
-          <h2 className='card__title'>{props.card.title}</h2>
-          <p className='card__text'>{props.card.content}</p>
+          <a
+            href={props.card.url}
+            className='card__link_article'
+            target='_blank'
+            rel='noreferrer'>
+            <h2 className='card__title'>{props.card.title}</h2>
+            <p className='card__text'>{props.card.content}</p>
+          </a>
         </div>
         <p className='card__source'>{props.card.source.name}</p>
       </div>

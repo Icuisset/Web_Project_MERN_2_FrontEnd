@@ -382,3 +382,9 @@
         /* number of lines to show */
     }
 }
+
+.card__link_article {
+    text-decoration: none;
+    margin: 0;
+    color: #1A1B22;
+}

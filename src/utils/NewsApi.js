@@ -19,7 +19,9 @@ class NewsApi {
     /* just double checking today's result*/
     const today = new Date().toISOString().slice(0, 10);
     console.log(today);  
-    const lastWeekDate = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+    /* adding const for number of days */
+    const numberDaysforSearch = 7;
+    const lastWeekDate = new Date(Date.now() - Number(numberDaysforSearch) * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
     console.log(lastWeekDate);
     return lastWeekDate;
   }

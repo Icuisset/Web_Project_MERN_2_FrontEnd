@@ -34,6 +34,7 @@ function Homepage(props) {
           onArticleSave={props.onArticleSave}
           onArticleDelete={props.onArticleDelete}
           savedArticles={props.savedArticles}
+          openLoginPopup={props.openLoginPopup}
         />
       )}
       {props.isSearchError ? (

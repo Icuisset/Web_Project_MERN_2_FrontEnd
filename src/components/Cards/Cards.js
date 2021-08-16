@@ -18,6 +18,7 @@ function Cards(props) {
                 savedArticles={props.savedArticles}
                 isHomePage={props.isHomePage}
                 isLoggedIn={props.isLoggedIn}
+                openLoginPopup={props.openLoginPopup}
               />
             ))}
           </ul>

@@ -16,6 +16,7 @@ function SearchResultsSection(props) {
         onArticleSave={props.onArticleSave}
         onArticleDelete={props.onArticleDelete}
         savedArticles={props.savedArticles}
+        openLoginPopup={props.openLoginPopup}
       />
       {props.cards.length !== 0 && !allCardsShown && props.isHomePage ? (
         <button

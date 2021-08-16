@@ -15,7 +15,6 @@ import api from "../../utils/MainApi";
 import newsApi from "../../utils/NewsApi";
 
 function App() {
-  const location = useLocation();
   const [isSigninPopupOpen, setIsSigninPopupOpen] = useState(false);
   const [isSignupPopupOpen, setIsSignupPopupOpen] = useState(false);
   const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
@@ -42,107 +41,11 @@ function App() {
 
   // eslint-disable-next-line no-unused-vars
   const history = useHistory();
+  const location = useLocation();
 
-  /**
-   * handle user registration
-   */
-
-  const handleSignUp = ({ name, email, password }) => {
-    authorize
-      .register(name, email, password)
-      .then((result) => {
-        console.log(result);
-        if (result.err) {
-          console.log(result.err);
-        } else {
-          setIsSignupPopupOpen(false);
-          setIsSuccessPopupOpen(true);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        if (err === "Error: 409") {
-          setIsNotAvailableEmail(true);
-        }
-      });
-  };
-
-  /**
-   * handle user authorization with token
-   */
-
-  const handleSignIn = ({ email, password }) => {
-    authorize
-      .authorizeWithToken(email, password)
-      .then((result) => {
-        console.log(result);
-        if (result.statusCode === 401) {
-          console.log(result);
-        }
-        const JWT = localStorage.getItem("jwt");
-        if (JWT) {
-          handleCheckTokenIsValid(JWT);
-        }
-        setToken(result.token);
-        localStorage.setItem("token", result.token);
-        console.log(result.token);
-        setIsSigninPopupOpen(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        if (err === "Error: 401") {
-          setWrongCredentials(true);
-        }
-      });
-  };
-
-  /**
-   * check token is valid and return user id and email
-   */
-
-  const handleCheckTokenIsValid = (JWT) => {
-    authorize
-      .checkTokenIsValid(JWT)
-      .then((result) => {
-        console.log(result.name, result);
-        setCurrentUser(result);
-        setIsLoggedIn(true);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  /**
-   * handle auto login
-   */
-
-  useEffect(() => {
-    const JWT = localStorage.getItem("jwt");
-    const KEYWORD = localStorage.getItem("kwd");
-
-    console.log(JWT);
-    if (JWT) {
-      handleCheckTokenIsValid(JWT);
-    }
-    if (KEYWORD) {
-      handleArticleSearch(KEYWORD);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  /**
-   * handle Log out
-   */
-
-  const handleLogOut = () => {
-    localStorage.removeItem("jwt");
-    setIsLoggedIn(false);
-    setCurrentUser({});
-    setIsNotAvailableEmail(false);
-    setWrongCredentials(false);
-    setSavedArticles([]);
-  };
+  // number constants
+  const numberCardsOnShowmoreClick = 3;
+  const initialNumberCardsShown = 3;
 
   /**
    * initial call to main api to get user information
@@ -192,6 +95,108 @@ function App() {
         });
     }
   }, [token]);
+
+  /**
+   * handle user registration
+   */
+
+  const handleSignUp = ({ name, email, password }) => {
+    authorize
+      .register(name, email, password)
+      .then((result) => {
+        console.log(result);
+        if (result.err) {
+          console.log(result.err);
+        } else {
+          setIsSignupPopupOpen(false);
+          setIsSuccessPopupOpen(true);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        if (err === "Error: 409") {
+          setIsNotAvailableEmail(true);
+        }
+      });
+  };
+
+  /**
+   * check token is valid and return user id and email
+   */
+
+  const handleCheckTokenIsValid = (JWT) => {
+    authorize
+      .checkTokenIsValid(JWT)
+      .then((result) => {
+        console.log(result.name, result);
+        setCurrentUser(result);
+        setIsLoggedIn(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  /**
+   * handle user authorization with token
+   */
+
+  const handleSignIn = ({ email, password }) => {
+    authorize
+      .authorizeWithToken(email, password)
+      .then((result) => {
+        console.log(result);
+        if (result.statusCode === 401) {
+          console.log(result);
+        }
+        const JWT = localStorage.getItem("jwt");
+        if (JWT) {
+          handleCheckTokenIsValid(JWT);
+        }
+        setToken(result.token);
+        localStorage.setItem("token", result.token);
+        console.log(result.token);
+        setIsSigninPopupOpen(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        if (err === "Error: 401") {
+          setWrongCredentials(true);
+        }
+      });
+  };
+
+  /**
+   * handle auto login
+   */
+
+  useEffect(() => {
+    const JWT = localStorage.getItem("jwt");
+    const KEYWORD = localStorage.getItem("kwd");
+
+    console.log(JWT);
+    if (JWT) {
+      handleCheckTokenIsValid(JWT);
+    }
+    if (KEYWORD) {
+      handleArticleSearch(KEYWORD);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  /**
+   * handle Log out
+   */
+
+  const handleLogOut = () => {
+    localStorage.removeItem("jwt");
+    setIsLoggedIn(false);
+    setCurrentUser({});
+    setIsNotAvailableEmail(false);
+    setWrongCredentials(false);
+    setSavedArticles([]);
+    history.push("/");
+  };
 
   /**
    * handle updates to the main api
@@ -267,7 +272,7 @@ function App() {
         if (result.articles.length === 0) {
           setNoArticleFound(true);
         }
-        setNumberCardsShown("3");
+        setNumberCardsShown(initialNumberCardsShown);
         console.log(result.articles);
         setCards(result.articles);
         setSearchKeyword(keyword);
@@ -327,7 +332,8 @@ function App() {
    */
 
   const handleShowMoreButtonClick = () => {
-    const newCardNumber = Number(numberCardsShown) + 3;
+    const newCardNumber =
+      Number(numberCardsShown) + Number(numberCardsOnShowmoreClick);
     console.log(newCardNumber);
     setNumberCardsShown(newCardNumber);
   };
@@ -352,8 +358,10 @@ function App() {
   useEffect(() => {
     if (!isLoggedIn && location.signin) {
       setIsSigninPopupOpen(true);
+    } else {
+      location.signin = false;
+      setIsSigninPopupOpen(false);
     }
-    location.signin = false;
   }, [location, isLoggedIn]);
 
   return (
@@ -392,7 +400,8 @@ function App() {
                 showMore={handleShowMoreButtonClick}
                 signinClick={() => handleHeaderSigninClick()}
                 signoutClick={() => handleHeaderSignoutClick()}
-                mobileMenuClick={() => handleHomeMobileMenuClick()}></HomePage>
+                mobileMenuClick={() => handleHomeMobileMenuClick()}
+                openLoginPopup={() => handlePopupSigninClick()}></HomePage>
             </>
           </Route>
         </Switch>
