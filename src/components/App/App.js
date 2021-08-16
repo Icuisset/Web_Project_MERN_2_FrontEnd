@@ -377,9 +377,9 @@ function App() {
             keyword={searchKeyword}
             savedArticles={savedArticles}
             onArticleDelete={handleDeleteArticle}
-            signinClick={() => handleHeaderSigninClick()}
-            signoutClick={() => handleHeaderSignoutClick()}
-            mobileMenuClick={() => handleNewsMobileMenuClick()}
+            signinClick={handleHeaderSigninClick}
+            signoutClick={handleHeaderSignoutClick}
+            mobileMenuClick={handleNewsMobileMenuClick}
           />
 
           <Route path='/'>
