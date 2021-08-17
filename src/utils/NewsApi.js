@@ -40,7 +40,7 @@ class NewsApi {
 
 
 const newsApi = new NewsApi({
-  baseUrl: "https://newsapi.org/v2/everything",
+  baseUrl: "https://nomoreparties.co/news/v2/everything",
   apiKey: '739496b8c350484585037c731a791729',
 })
 
